@@ -1,0 +1,19 @@
+ <nav>
+	<div id="logo"></div>
+	<ul id="nav_options" class="nav">
+		<li class="nav_items">
+			<%= link_to 'create alert', root_path %>
+		</li>
+
+		<li class="nav_items">
+			<% if user_signed_in? %>
+				<%= link_to 'logout', destroy_user_session_url, method: :delete %></li>
+		<li class="nav_items">
+				<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+			<% else %>
+				<%= link_to 'log in', new_user_session_path %>
+				<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>
+			<% end %>
+		</li>
+	</ul>
+</nav>
