@@ -1,12 +1,11 @@
-Discoveree
+Thoughtly
 ==========
-(Working Title)
 
-Discoveree is a topic exploration website and Chome extension.
+Thoughtly is a topic exploration website and Chome extension.
 
 Have you ever found an article on a topic of interest, but did not have the time to finish reading the article or explore the topic in greater detail?
 
-With Discoveree, users can easily mark topics of interest and return to them later.  Discoveree takes the topic, and searches for relevant information using the following APIs:
+With Thoughtly, users can easily mark topics of interest and return to them later.  Thoughtly takes the topic, and searches for relevant information using the following APIs:
 
 * Freebase
 * TED Talks
