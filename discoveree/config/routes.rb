@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  devise_scope :user do get 'root' => 'devise/sessions#new'
-  end
+  root 'users#index'
   resources :users do
-    resources :categories
+    resources :categories, :except => ['create']
   end
+  post '/categories/create' => 'categories#create'
 end
