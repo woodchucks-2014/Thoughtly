@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
          #:provider, :uid #provider and uid are for oauth
   has_many :categories, through: :contents
   has_many :contents
+  devise :omniauthable, :omniauth_providers => [:google_oauth2]
 
 end
