@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
 	include GoogleHelper
 
-	CLIENT_ID = '817679787149-8k3c1jelf8u6oprp5vvljlgt53lppb75.apps.googleusercontent.com'
-  CLIENT_SECRET = 'mHYBIpWOS9rCAWNWTe2ye5s4'
+	CLIENT_ID = ENV['oauth2_client_id']
+  CLIENT_SECRET = ENV['oauth2_client_secret']
   CLIENT_SCOPE = 'https://www.googleapis.com/auth/userinfo.email'
   BASEURL = 'http://127.0.0.1:3000/'
 
