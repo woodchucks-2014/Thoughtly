@@ -1,1 +1,4 @@
-<%= @user.email %>
+<% @user.categories.each do |category| %>
+	<h2><%= category.name %></h2>
+
+<% end %>
