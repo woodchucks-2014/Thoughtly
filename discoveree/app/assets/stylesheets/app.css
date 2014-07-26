@@ -50,6 +50,10 @@ h3 {
   font-size: 1.5em;
 }
 
+a {
+	text-decoration: none;
+}
+
 .container {
   border: 1px dotted;
   border-left:none;
