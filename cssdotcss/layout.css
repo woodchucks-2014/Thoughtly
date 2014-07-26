@@ -1,6 +1,17 @@
 /*require 'sass'*/
 body {
-  /*background: linear-gradient(#bbdaf9, #1b1b24);*/
+  background-image: -webkit-gradient(
+  linear,
+  left top,
+  left bottom,
+  color-stop(0.48, #28537D),
+  color-stop(1, #1B1B24)
+  );
+  background-image: -o-linear-gradient(bottom, #28537D 48%, #1B1B24 100%);
+  background-image: -moz-linear-gradient(bottom, #28537D 48%, #1B1B24 100%);
+  background-image: -webkit-linear-gradient(bottom, #28537D 48%, #1B1B24 100%);
+  background-image: -ms-linear-gradient(bottom, #28537D 48%, #1B1B24 100%);
+  background-image: linear-gradient(to bottom, #28537D 48%, #1B1B24 100%);
 }
 
 /*  SECTIONS  */
@@ -47,17 +58,17 @@ col .span_3_of_3 {
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
 
 @media only screen and (max-width: 480px) {
-  .col { 
+  .col {
     margin: 1% 0 1% 0%;
   }
 }
 
 @media only screen and (max-width: 480px) {
   .span_3_of_3 {
-    width: 100%; 
+    width: 100%;
   }
   .span_2_of_3 {
-    width: 100%; 
+    width: 100%;
   }
   .span_1_of_3 {
     width: 100%;
