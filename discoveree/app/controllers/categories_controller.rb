@@ -1,9 +1,9 @@
 class CategoriesController < ApplicationController
-  include UserHelper
+  include AuthenticationHelper
 
   def index
+    p session[:user_id]
     @user = current_user
-    @categories = @user.categories
   end
 
   def create
