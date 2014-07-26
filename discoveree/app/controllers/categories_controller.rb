@@ -19,4 +19,5 @@ class CategoriesController < ApplicationController
     render :json => { category: @category.name }
   end
 
+
 end

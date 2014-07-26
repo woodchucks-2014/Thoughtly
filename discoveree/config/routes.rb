@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :categories, :except => ['create']
   end
   post '/categories/create' => 'categories#create'
+  get '/nodegraph' => 'users#nodegraph'
 end
