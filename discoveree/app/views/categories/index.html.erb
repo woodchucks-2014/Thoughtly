@@ -1,5 +1,5 @@
 <header>
-  <h3>thoughtly.io</h3>
+  <h3>mythoughtly</h3>
 	<div id="fa">
 	  <%= link_to icon('home fa-2x'), root_path %></a>&nbsp;&nbsp;&nbsp;	  
 	  <%=link_to icon('lightbulb-o fa-2x'), root_path %></a>&nbsp;&nbsp;&nbsp;
@@ -8,6 +8,14 @@
 </header>
 
 
+<nav id="nav">
+</nav>
+
+	<div id="typography">
+	<div class="container"><%= link_to "Content", user_categories_path(1) %></div></a>
+	<div class="container">Content Content</div>
+
+</body>
 
 <% @user.categories.each do |category| %>
 	<h2><%= category.name %></h2>
