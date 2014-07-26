@@ -1,0 +1,14 @@
+<%= flash[:notice] %>
+    <%= form_for :user,  url: {action: "create"} do |f| %>
+ 
+    <%= f.label :email, "Email" %><br />
+    <%= f.text_field :email, placeholder: "You@domain.com" %><br>
+ 
+    <%= f.label :password %><br />
+    <%= f.password_field :password, placeholder: "Password"  %><br>
+ 
+    <div class="text-center">
+      <%= f.submit "Sign Me Up!"%>
+    </div>
+ 
+<% end %>
