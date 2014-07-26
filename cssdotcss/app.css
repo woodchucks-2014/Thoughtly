@@ -1,0 +1,146 @@
+/*#251335*/
+header {
+  background-color: #10253c;
+  color: white;
+  margin-top: 0;
+  top: 0;
+  position: fixed;
+  clear: both;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+#typography {
+  margin-top: 7em;
+}
+
+
+h1, h2, h3 {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3 {
+  font-size: 2em;
+}
+
+p {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+p .large_text {
+  font-size: 1.25em;
+}
+
+p .medium_text {
+  font-size: 1em;
+}
+
+p .small_text {
+  font-size: 0.75em;
+}
+
+.circle_color {
+  border-radius: 50%;
+  height: 5em;
+  width: 5em;
+  float: left;
+}
+
+.container {
+  border: 1px dotted black;
+  margin: 1em;
+  padding: 1em;
+  overflow: auto
+
+}
+
+#c1 {
+  background-color: #10253c;
+}
+
+#c2 {
+  background-color: #bbdaf9;
+}
+
+#c3 {
+  background-color: #7a7a8a;
+}
+
+#c4 {
+  background-color: #1b1b24;
+}
+
+#c5 {
+  background-color: #45a4ff;
+}
+
+#c6 {
+  background-color: #07121c;
+}
+
+#c7 {
+  background-color: #438bc0;
+}
+
+#c8 {
+  background-color: #191919;
+}
+
+
+.primary_button {
+   border-top: 1px solid #989c9e;
+   background: #AA3a40;
+   background: -webkit-gradient(linear, left top, left bottom, from(#879dab), to(#323a40));
+   background: -webkit-linear-gradient(top, #879dab, #323a40);
+   background: -moz-linear-gradient(top, #879dab, #323a40);
+   background: -ms-linear-gradient(top, #879dab, #323a40);
+   background: -o-linear-gradient(top, #879dab, #323a40);
+   padding: 12px 25px;
+   color: white;
+   font-family: 'Ubuntu', sans-serif;
+}
+
+.primary_button:hover {
+   border-top-color: #096db0;
+   background: #45a4ff;
+   }
+.primary_button:active {
+   border-top-color: #1b435e;
+   background: #855607;
+   }
+
+.secondary_button {
+   border-top: 1px solid #989c9e;
+   background: #AA3a40;
+   background: -webkit-gradient(linear, left top, left bottom, from(#879dab), to(#323a40));
+   background: -webkit-linear-gradient(top, #879dab, #323a40);
+   background: -moz-linear-gradient(top, #879dab, #323a40);
+   background: -ms-linear-gradient(top, #879dab, #323a40);
+   background: -o-linear-gradient(top, #879dab, #323a40);
+   padding: 12px 25px;
+   color: white;
+   font-family: 'Ubuntu', sans-serif;
+}
+
+.secondary_button:hover {
+   border-top-color: #096db0;
+   background: #bbdaf9;
+   color: #2F4F4F;
+}
+.secondary_button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+}
+
+
+
+
