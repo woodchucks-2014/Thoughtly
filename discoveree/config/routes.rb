@@ -9,9 +9,8 @@ Rails.application.routes.draw do
   resources :users do
     resources :categories, :except => ['create']
   end
-<<<<<<< HEAD
+
   post '/categories/create' => 'categories#create'
   get '/nodegraph' => 'users#nodegraph'
-=======
->>>>>>> a36d35230f245c9a6600d38aa7554a8e9b52bae4
+
 end
