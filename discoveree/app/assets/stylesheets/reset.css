@@ -1,0 +1,15 @@
+/*html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com 
+Twitter: @rich_clark
+*/
+
+* {
+    margin:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    background:transparent;
+}
+

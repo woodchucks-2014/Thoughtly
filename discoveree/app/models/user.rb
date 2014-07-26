@@ -1,10 +1,18 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable
-  devise :database_authenticatable, :registerable, #:omniauthable, #omniauthable is for oauth for google
-         :recoverable, :rememberable, :trackable, :validatable #:omniauth_providers => [:google_oauth2] #oauth
-         #:provider, :uid #provider and uid are for oauth
   has_many :categories, through: :contents
   has_many :contents
+ 
+  # validates :email, format: {with: /[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,}/}
+  # validates_presence_of :email, :first_name, :password, :password_confirmation
+
+  def self.authenticate(email, password)
+    user = User.find_by_email(email)
+    p email
+    p password
+    p user
+    p "*"*10
+    return user if user && (user.password == password)
+    nil 
+  end
 
 end

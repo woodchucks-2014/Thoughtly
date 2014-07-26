@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-shuff = User.create(email: "shuff@shuff.com", password: "shuffshuff", password_confirmation: "shuffshuff")
+shuff = User.create(email: "shuff@shuff.com", password: "shuffshuff") #, password_confirmation: "shuffshuff")
 category = Category.create(name: "Haskell")
 
 10.times do
