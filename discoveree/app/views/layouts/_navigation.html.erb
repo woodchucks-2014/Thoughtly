@@ -1,11 +1,10 @@
  <nav>
 	<div id="logo"></div>
 	<ul id="nav_options" class="nav">
-		<li class="nav_items">
-			<%= link_to 'create alert', root_path %>
-		</li>
-
-		<li class="nav_items">
-		</li>
+		<% if !session[:user_id] %> 
+			<li class="nav_items"><%= link_to 'Login', users_login_path %></li>
+		<% else %>
+			<li class="nav_items"><%= link_to 'Logout', logout_path(session[:user_id].to_i) %></li>
+		<% end %>
 	</ul>
 </nav>
