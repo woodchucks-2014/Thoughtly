@@ -25,7 +25,7 @@ gem 'pg'
 gem 'rest-client'
 gem 'omniauth-google-oauth2'
 gem 'json'
-gem 'dotenv-rails', :groups => [:development, :test]
+gem 'dotenv-rails'
 gem 'google-api-client', '~> 0.7.1'
 gem 'trollop'
 gem 'httparty', '~> 0.13.1'
