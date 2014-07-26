@@ -1,9 +1,15 @@
 class CategoriesController < ApplicationController
-  include AuthenticationHelper
+  include UserHelper
 
   def index
-    p session[:user_id]
-    @user = current_user
+    check_sign_in
+    @current_user = User.find_by_id(session[:user_id])
+    @user = User.find_by_id(params[:user_id])
+    if @current_user.id != @user.id
+      redirect_to user_categories_path(@current_user)
+    else 
+      @categories = @current_user.categories
+    end
   end
 
   def create
