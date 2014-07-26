@@ -16,6 +16,14 @@ body {
   z-index: -1;
 }
 
+#user_email {
+	background-color: white;
+}
+
+#user_password {
+	background-color: white;
+}
+
 header {
   background-color: #273a4f;
   background-image: -webkit-linear-gradient(#273a4f, #060e18);

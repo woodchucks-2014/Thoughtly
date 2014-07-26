@@ -25,12 +25,10 @@ gem 'pg'
 gem 'rest-client'
 gem 'omniauth-google-oauth2'
 gem 'json'
-
 #for awesome icons
 gem 'font-awesome-sass'
 
 gem 'dotenv-rails'
-
 # compatibility with Heroku
 gem 'rails_12factor'
 
