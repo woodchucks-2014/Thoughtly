@@ -1,6 +1,8 @@
 $font-stack:    'Ubuntu', sans-serif;
 $primary-color: #385371;
 $dark-primary: darken( $primary-color, 5% );
+$darkblue: #07121c;
+$visited: lighten(orange, 30%);
 
 
 html {
@@ -21,7 +23,7 @@ body {
   height: 100%;
   width: 100%;
   position: fixed;
-  background: -webkit-linear-gradient(transparent 5%, #07121c);
+  background: -webkit-linear-gradient(transparent 5%, $darkblue);
   z-index: -1;
 }
 
@@ -60,7 +62,11 @@ h3 {
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
+}
+
+a:visited { 
+  text-decoration: none; color:$visited; 
 }
 
 .container {
@@ -77,7 +83,7 @@ a {
 
 .container:hover {
   opacity: 0.4;
-  background-color: #07121c;
+  background-color: $darkblue;
   color: white;
   font-weight: 600;
   text-shadow: 0 0 0.2em #bbdaf9;
@@ -91,8 +97,9 @@ a {
   text-align:left;
 }
 #a:hover, #c:hover{
-	text-shadow: 0 0 0.2em #bbdaf9
+  text-shadow: 0 0 0.2em #bbdaf9
 }
+
 
 form {
   text-align: center;
@@ -103,7 +110,7 @@ form {
   position: relative;
   top: 100px;
   margin: 0 auto;
-  border: 1px solid #07121c;
+  border: 1px solid $darkblue;
   text-align: center;
   padding-top: 30px;
   border-radius: 5px;
