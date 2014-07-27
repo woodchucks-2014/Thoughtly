@@ -1,8 +1,10 @@
-$(window).on("scroll", function () {
-  if ($(this).scrollTop() > 15) { //Any number you want
-      $("header").fadeIn().removeClass("show");
-  }
-  else {
-      $("header").fadeOut().addClass("show");
-  }
-});
+
+// $(window).on("scroll", function () {
+//   if ($(this).scrollTop() > 50) {
+//       $("header").fadeIn("slow").removeClass("show");
+//   }
+//   else {
+//       $("header").fadeOut("slow").addClass("show");
+//   }
+// });          
+
