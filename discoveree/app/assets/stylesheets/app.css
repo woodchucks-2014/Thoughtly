@@ -12,16 +12,8 @@ body {
   height: 100%;
   width: 100%;
   position: fixed;
-  background: -webkit-linear-gradient(transparent 60%, #07121c);
+  background: -webkit-linear-gradient(transparent 40%, #07121c);
   z-index: -1;
-}
-
-#user_email {
-	background-color: white;
-}
-
-#user_password {
-	background-color: white;
 }
 
 header {
@@ -87,13 +79,47 @@ a {
 }
 
 #fa {
-	text-align: center;
-	text-decoration: none;
+  text-align:left;
 }
-
-#fa:hover{
+#a:hover, #c:hover{
 	text-shadow: 0 0 0.2em #bbdaf9
 }
 
+form {
+  text-align: center;
+  background-color: #07121c;
+  display: block;
+  width: 300px;
+  margin: 0 auto;
+  position: relative;
+  top: 100px;
+  margin: 0 auto;
+  border: 1px solid #07121c;
+  text-align: center;
+  padding-top: 30px;
+  border-radius: 5px;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+     -moz-box-shadow: 0 8px 6px -6px black;
+          box-shadow: 0 8px 6px -6px black;
+}
 
+button {
+  background: -webkit-linear-gradient(top, #bbdaf9, #385371);
+  background-color: #323a40;
+  padding: px 15px;
+  color: white;
+  font-family: 'Ubuntu', sans-serif;
+}
 
+button:hover {
+  border-top-color: #385371;
+  background: #7a7a8a;
+}
+
+#user_email {
+  background-color: white;
+}
+
+#user_password {
+  background-color: white;
+}

@@ -1,12 +1,10 @@
+
+
 <%= form_for :user,  url: {action: "login"} do |f| %>
- 
-    <%= f.text_field :email, placeholder: "Email" %><br>
- 
-    <%= f.password_field :password, placeholder: "Password"  %><br>
- 
-    <div class="text-center">
-      <%= f.submit "Sign Me In!"%>
-    </div>
+	<h3>welcome, thinker</h3><br>
+    <%= f.text_field :email, placeholder: "Email" %><br><br>
+    <%= f.password_field :password, placeholder: "Password"  %><br><br>
+      <button id="button"><%= f.submit "Sign Me In!"%></button>
     <br>
     <%= link_to 'Create a new account', users_signup_path %>
  
