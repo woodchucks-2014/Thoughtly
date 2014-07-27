@@ -26,11 +26,13 @@ class CategoriesController < ApplicationController
 
   def show
     @current_user = User.find_by_id(session[:user_id])
-    @user = User.find_by_id(params[:user_id])
-    if @current_user.id != @user.id
+    @category = Category.find_by_id(params[:id])
+    unless @current_user.id == params[:user_id].to_i
       redirect_to user_categories_path(@current_user)
-    else
-      @category = Category.find_by_id(params[:id])
+    end
+    unless Category.exists?(params[:id])
+      # redirect_to user_categories_path(@current_user)
+      render :file => "#{Rails.root}/public/404.html",  :status => 404
     end
   end
 
