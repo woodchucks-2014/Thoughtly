@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
     @user = User.authenticate(params[:email], params[:password])
     if @user
       @category_array = Category.analyze_url(params[:url])
-      @category = Category.new(name: @category_array[0], related_categories:@category_array[1..-1].join("%"))
+      @category = Category.new(name: @category_array[0])
       render :json => { message: "Creating a briefing on: " + @category.name + "..." }
     else
       render :json => { message: "Oops! Looks like you need to sign up first." }
@@ -25,11 +25,11 @@ class CategoriesController < ApplicationController
   def show
     @current_user = User.find_by_id(session[:user_id])
     @category = Category.find_by_id(params[:id])
+    @summary = @category.generate_summary
     unless @current_user.id == params[:user_id].to_i
       redirect_to user_categories_path(@current_user)
     end
     unless Category.exists?(params[:id])
-      # redirect_to user_categories_path(@current_user)
       render :file => "#{Rails.root}/public/404.html",  :status => 404
     end
   end
@@ -42,7 +42,7 @@ class CategoriesController < ApplicationController
     render :json => {related_categories: 
       ["blue", "red", "green", "yellow", "pink", "purple", "blue", "fuschia", "shuff", "magenta", "green", "orange"]
       }.to_json
-     # render :json => {related_categories: array}.to_json
+     # render :json = > {related_categories: array}.to_json
 
   end
 

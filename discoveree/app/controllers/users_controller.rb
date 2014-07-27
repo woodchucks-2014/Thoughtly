@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   include UserHelper
 
   def index
-    check_sign_in
+    # check_sign_in #commented these out because of redirect loop
     redirect_to user_categories_path(@user)
   end
 

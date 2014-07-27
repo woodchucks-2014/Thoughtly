@@ -1,36 +1,46 @@
 $font-stack:    'Ubuntu', sans-serif;
-$primary-color: #385371;
-$dark-primary: darken( $primary-color, 5% );
-$darkblue: #07121c;
-$visited: lighten(orange, 30%);
 
+$primary-color:  #385371;
+$dark-primary:   darken( $primary-color, 5% );
+$textcolor:      white;
+
+$darkblue:       #07121C;
+$lightblue:      #BBDAF9; 
+$lightbluedark:  darken($lightblue, 30%);  
+/*darken($lightblue, 30%) replaces #273A4F*/
+$headerblue:     #273A4F;
+$headershadow:   #060E18;
+$link: #6CF22E;
+
+$visited:        lighten(orange, 30%);
+/*need to use jquery for font resizing*/
 
 html {
   height: 100%;
 }
 
-
 body {
-  background-image:url('lines.png');
+  /*background-image:url('lines.png');*/
   background-size: 100%;
   background-repeat: no-repeat;
-  /*background: $primary-color;*/
+  background: $primary-color;
   overflow:scroll;
   position:relative;
 }
 
+/*this is the transparent overlay, if things aren't working check out its z index*/
 #fade{
   height: 100%;
   width: 100%;
   position: fixed;
-  background: -webkit-linear-gradient(transparent 5%, $darkblue);
-  z-index: -1;
+  background: -webkit-linear-gradient(transparent 80%, $darkblue);
+  z-index: 1;
 }
 
 header {
-  background-color: #273a4f;
-  background-image: -webkit-linear-gradient(#273a4f, #060e18);
-  color: white;
+  background-color: $headerblue;
+  background-image: -webkit-linear-gradient($headerblue, $headershadow);
+  color: $textcolor;
   top: 0;
   padding-left: 20px;
   padding-top: 5px;
@@ -38,11 +48,12 @@ header {
   clear: both;
   width: 100%;
   display: block;
+  z-index: 5;
 }
 
-h1, h2, h3 {
+h1, h2 {
   font-family: $font-stack;
-  text-shadow: 0 0 0.2em #bbdaf9
+  text-shadow: 0 0 0.2em $lightblue
 }
 
 h1 {
@@ -51,14 +62,17 @@ h1 {
 
 h1:hover {
   font-size: 2.5em;
-  text-shadow: 0 0 0.7em #bbdaf9
+  text-shadow: 0 0 0.7em $lightblue
 }
 h2 {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 h3 {
-  font-size: 1.5em;
+  font-size: 1.25em;
+  font-family: $font-stack;
+  font-weight: 200;
+  color: $textcolor;
 }
 
 a {
@@ -66,9 +80,10 @@ a {
 }
 
 a:visited { 
-  text-decoration: none; color:$visited; 
+  text-decoration: none; color: $visited; 
 }
 
+/*for contents*/
 .container {
   border: 1px dotted;
   border-left:none;
@@ -77,41 +92,58 @@ a:visited {
   padding: 1em;
   overflow: auto;
   font-family: $font-stack;
-  color: #80c1ff;
+  color: $lightbluedark;
   text-decoration:none;
 }
 
 .container:hover {
   opacity: 0.4;
   background-color: $darkblue;
-  color: white;
+  color: $textcolor;
   font-weight: 600;
-  text-shadow: 0 0 0.2em #bbdaf9;
+  text-shadow: 0 0 0.2em $lightblue;
 }
 
+/*generic id for adding margin, can be redone*/
 #typography {
   margin-top: 3em;
 }
 
+/*font awesome*/
 #fa {
   text-align:left;
 }
 #a:hover, #c:hover{
-  text-shadow: 0 0 0.2em #bbdaf9
+  text-shadow: 0 0 0.2em $lightblue
 }
 
+/*welcome box on homepage*/
+#welcome {
+  text-align: center;
+  background-color: $dark-primary;
+  width: 300px;
+  position: absolute;
+  top: 40%; left: 0; right: 0;
+  margin: 0 auto;
+  border: 1px solid $darkblue;
+  z-index: 10;
+  border-radius: 5px;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+     -moz-box-shadow: 0 8px 6px -6px black;
+          box-shadow: 0 8px 6px -6px black;
 
+}
+
+/*sign in and sign out*/
 form {
   text-align: center;
   background-color: $dark-primary;
   display: block;
   width: 300px;
-  margin: 0 auto;
   position: relative;
   top: 100px;
   margin: 0 auto;
   border: 1px solid $darkblue;
-  text-align: center;
   padding-top: 30px;
   border-radius: 5px;
     -webkit-box-shadow: 0 8px 6px -6px black;
@@ -120,12 +152,14 @@ form {
 }
 
 button {
-  background: -webkit-linear-gradient(top, #bbdaf9, $primary-color);
+  background: -webkit-linear-gradient(top, $lightblue, $primary-color);
   background-color: #323a40;
   padding: 5px 15px;
-  color: white;
+  color: $textcolor;
   font-family: $font-stack;
 }
+
+
 
 button:hover {
   border-top-color: $primary-color;
@@ -133,9 +167,9 @@ button:hover {
 }
 
 #user_email {
-  background-color: white;
+  background-color: $textcolor;
 }
 
 #user_password {
-  background-color: white;
+  background-color: $textcolor;
 }
