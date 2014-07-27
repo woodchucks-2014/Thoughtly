@@ -1,11 +1,15 @@
+<p>Node</p>
+<canvas id="viewport" height="800" width="800"></canvas>
+<p>Graph</p>
 <h2><%= @category.name %></h2>
 <div id="contents">
 	<ul><% @category.contents.each do |content| %>
 		<% unless content.url == nil %>
 			<li class="container"><%= link_to content.url, content.url %></li>
 		<% end %>
-	<% end %></ul>	
+	<% end %></ul>
 </div>
 <div id="summary">
 	<%= @summary %>
 </div>
+
