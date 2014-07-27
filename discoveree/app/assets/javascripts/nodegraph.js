@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	alert("JQuery Connected, Arbor.js Connected");
 
-	var sys = arbor.ParticleSystem(32, 30, 40)
+	var sys = arbor.ParticleSystem(1000, 30, 40)
 	sys.parameters({gravity:true})
 	sys.renderer = Renderer("#viewport");
 
