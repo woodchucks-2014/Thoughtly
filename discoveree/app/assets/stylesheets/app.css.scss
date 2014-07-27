@@ -22,7 +22,7 @@ body {
   /*background-image:url('lines.png');*/
   background-size: 100%;
   background-repeat: no-repeat;
-  /*background: $primary-color;*/
+  background: $primary-color;
   overflow:scroll;
   position:relative;
 }
@@ -32,7 +32,7 @@ body {
   height: 100%;
   width: 100%;
   position: fixed;
-  background: -webkit-linear-gradient(transparent 5%, $darkblue);
+  background: -webkit-linear-gradient(transparent 80%, $darkblue);
   z-index: 1;
 }
 
@@ -50,7 +50,7 @@ header {
   z-index: 5;
 }
 
-h1, h2, h3 {
+h1, h2 {
   font-family: $font-stack;
   text-shadow: 0 0 0.2em $lightblue
 }
@@ -64,11 +64,14 @@ h1:hover {
   text-shadow: 0 0 0.7em $lightblue
 }
 h2 {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 h3 {
-  font-size: 1.5em;
+  font-size: 1.25em;
+  font-family: $font-stack;
+  font-weight: 200;
+  color: $textcolor;
 }
 
 a {
@@ -76,7 +79,7 @@ a {
 }
 
 a:visited { 
-  text-decoration: none; color:$visited; 
+  text-decoration: none; color: $visited; 
 }
 
 /*for contents*/
