@@ -15,8 +15,6 @@ class CategoriesController < ApplicationController
     if @user
       @category_name = Category.analyze_url(params[:url])
       @category = Category.new(name: @category_name)
-      p @category
-      p @category_name
       render :json => { message: "Creating a briefing on: " + @category.name + "..." }
     else
       render :json => { message: "Oops! Looks like you need to sign up first." }
@@ -27,11 +25,11 @@ class CategoriesController < ApplicationController
   def show
     @current_user = User.find_by_id(session[:user_id])
     @category = Category.find_by_id(params[:id])
+    @summary = @category.generate_summary
     unless @current_user.id == params[:user_id].to_i
       redirect_to user_categories_path(@current_user)
     end
     unless Category.exists?(params[:id])
-      # redirect_to user_categories_path(@current_user)
       render :file => "#{Rails.root}/public/404.html",  :status => 404
     end
   end

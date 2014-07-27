@@ -4,9 +4,8 @@
 		<% unless content.url == nil %>
 			<li class="container"><%= link_to content.url, content.url %></li>
 		<% end %>
-	<% end %></ul>
-
-	<div id="summary">
-		
-	</div>
+	<% end %></ul>	
+</div>
+<div id="summary">
+	<%= @summary %>
 </div>

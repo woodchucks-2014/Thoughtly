@@ -3,7 +3,7 @@ $primary-color: #385371;
 $dark-primary: darken( $primary-color, 5% );
 $darkblue: #07121c;
 $visited: lighten(orange, 30%);
-
+$link: #6CF22E;
 
 html {
   height: 100%;
@@ -126,6 +126,8 @@ button {
   color: white;
   font-family: $font-stack;
 }
+
+
 
 button:hover {
   border-top-color: $primary-color;
