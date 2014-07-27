@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     check_sign_in
-    redirect_to user_categories_path(@user)
+    # redirect_to user_categories_path(@user)
   end
 
   def sign_in_page
