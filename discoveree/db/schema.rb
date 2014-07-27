@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140725010518) do
 
   create_table "contents", force: true do |t|
     t.string   "url"
-    t.string   "type"
+    t.string   "source"
     t.integer  "user_id"
     t.integer  "category_id"
     t.datetime "created_at"

@@ -1,41 +1,3 @@
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<style>
-			body {
-				background-color: #000000;
-				margin: 0px;
-				overflow: hidden;
-			}
-
-			a {
-				color:#0078ff;
-			}
-		</style>
-	</head>
-
-
-<body>
-<div id="fade">
-</div>
-
- <nav> 	
-<header>
-  <h1>thoughtly.io</h1>
-	<div id="fa">
-	 <div id="a"><%= link_to icon('home fa-2x'), root_path %></div>	  
-	 <div id="c"><%= link_to icon('sign-in fa-2x'), users_login_path %></div>
-	</div>
-</header>
-
-</nav>
-</div>
-
-		<script src="http://threejs.org/build/three.min.js"></script>
-
-		<script>
-
 			var mouseX = 0, mouseY = 0,
 
 			windowHalfX = window.innerWidth / 2,
@@ -198,7 +160,3 @@
 				renderer.render( scene, camera );
 
 			}
-
-		</script>
-	</body>
-</html>
