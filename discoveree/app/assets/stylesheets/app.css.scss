@@ -1,0 +1,141 @@
+$font-stack:    'Ubuntu', sans-serif;
+$primary-color: #385371;
+$dark-primary: darken( $primary-color, 5% );
+$darkblue: #07121c;
+$visited: lighten(orange, 30%);
+
+
+html {
+  height: 100%;
+}
+
+
+body {
+  background-image:url('lines.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  /*background: $primary-color;*/
+  overflow:scroll;
+  position:relative;
+}
+
+#fade{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: -webkit-linear-gradient(transparent 5%, $darkblue);
+  z-index: -1;
+}
+
+header {
+  background-color: #273a4f;
+  background-image: -webkit-linear-gradient(#273a4f, #060e18);
+  color: white;
+  top: 0;
+  padding-left: 20px;
+  padding-top: 5px;
+  position: fixed;
+  clear: both;
+  width: 100%;
+  display: block;
+}
+
+h1, h2, h3 {
+  font-family: $font-stack;
+  text-shadow: 0 0 0.2em #bbdaf9
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h1:hover {
+  font-size: 2.5em;
+  text-shadow: 0 0 0.7em #bbdaf9
+}
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited { 
+  text-decoration: none; color:$visited; 
+}
+
+.container {
+  border: 1px dotted;
+  border-left:none;
+  border-right:none;
+  margin: 1em;
+  padding: 1em;
+  overflow: auto;
+  font-family: $font-stack;
+  color: #80c1ff;
+  text-decoration:none;
+}
+
+.container:hover {
+  opacity: 0.4;
+  background-color: $darkblue;
+  color: white;
+  font-weight: 600;
+  text-shadow: 0 0 0.2em #bbdaf9;
+}
+
+#typography {
+  margin-top: 3em;
+}
+
+#fa {
+  text-align:left;
+}
+#a:hover, #c:hover{
+  text-shadow: 0 0 0.2em #bbdaf9
+}
+
+
+form {
+  text-align: center;
+  background-color: $dark-primary;
+  display: block;
+  width: 300px;
+  margin: 0 auto;
+  position: relative;
+  top: 100px;
+  margin: 0 auto;
+  border: 1px solid $darkblue;
+  text-align: center;
+  padding-top: 30px;
+  border-radius: 5px;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+     -moz-box-shadow: 0 8px 6px -6px black;
+          box-shadow: 0 8px 6px -6px black;
+}
+
+button {
+  background: -webkit-linear-gradient(top, #bbdaf9, $primary-color);
+  background-color: #323a40;
+  padding: 5px 15px;
+  color: white;
+  font-family: $font-stack;
+}
+
+button:hover {
+  border-top-color: $primary-color;
+  background: #7a7a8a;
+}
+
+#user_email {
+  background-color: white;
+}
+
+#user_password {
+  background-color: white;
+}

@@ -7,7 +7,6 @@ class CategoriesController < ApplicationController
     @categories = @current_user.categories
     unless @current_user.id == params[:user_id].to_i
       redirect_to user_categories_path(@current_user)
-      # raise ApplicationController::RoutingError.new('Not Found')
     end
   end
 
@@ -23,6 +22,16 @@ class CategoriesController < ApplicationController
       render :json => { message: "Oops! Looks like you need to sign up first." }
     end
     Content.generate(@category, @user) if @category.save
+  end
+
+  def show
+    @current_user = User.find_by_id(session[:user_id])
+    @user = User.find_by_id(params[:user_id])
+    if @current_user.id != @user.id
+      redirect_to user_categories_path(@current_user)
+    else
+      @category = Category.find_by_id(params[:id])
+    end
   end
 
 end

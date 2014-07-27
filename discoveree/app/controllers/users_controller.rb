@@ -16,7 +16,6 @@ class UsersController < ApplicationController
 
   def login
   	@email = params[:user][:email]
-  	p params[:email]
     @user = User.authenticate(@email, params[:user][:password])
     if @user
       session[:user_id] = @user.id
