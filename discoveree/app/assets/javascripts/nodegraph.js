@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	if($("#viewport").is(":visible") == true){
 	alert("JQuery Connected, Arbor.js Connected");
 
 	var sys = arbor.ParticleSystem(1000, 30, 40)
@@ -28,5 +29,5 @@ $(document).ready(function(){
 
 	// var green = sys.addNode('Green',{'color':'green', 'shape': 'dot', 'label':'green', 'link':"http://www.wikipedia.org/"});
 	// 	sys.addEdge(red, green);
-
+	};
 });
