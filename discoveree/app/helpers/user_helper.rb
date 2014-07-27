@@ -8,4 +8,10 @@ module UserHelper
   	end
   end
 
+  def sanity_check param
+    p "*"*15
+    p param
+    p "*"*15
+  end
+
 end

@@ -17,3 +17,13 @@
 	<% end %>
 
 </body>
+<% @user.categories.each do |category| %>
+  <h2><%= category.name %></h2>
+  <ul><% category.contents.each do |content| %>
+	 <li><%= content.url %></li>
+  <% end %></ul>
+<% end %>
+
+<p>Node</p>
+<canvas id="viewport" height="800" width="800"></canvas>
+<p>Graph</p>
