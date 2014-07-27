@@ -1,10 +1,15 @@
- <nav>
-	<div id="logo"></div>
-	<ul id="nav_options" class="nav">
-		<% if !session[:user_id] %> 
-			<li class="nav_items"><%= link_to 'Login', users_login_path %></li>
-		<% else %>
-			<li class="nav_items"><%= link_to 'Logout', logout_path(session[:user_id].to_i) %></li>
-		<% end %>
-	</ul>
+<!-- <body>
+<div id="fade">
+</div>
+
+ <nav> 	
+<header>
+  <h1>thoughtly.io</h1>
+	<div id="fa">
+	 <div id="a"><%= link_to icon('home fa-2x'), root_path %></div>	  
+	 <div id="c"><%= link_to icon('sign-in fa-2x'), users_login_path %></div>
+	</div>
+</header>
+
 </nav>
+</div> -->
