@@ -1,42 +1,3 @@
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<style>
-			body {
-				background-color: #000000;
-				margin: 0px;
-				overflow: hidden;
-			}
-
-			a {
-				color:#0078ff;
-			}
-		</style>
-	</head>
-
-<body>
-<div id="fade">
-</div>
-
- <nav> 	
-<header>
-  <h1>thoughtly.io</h1>
-	<div id="fa">
-	 <div id="a"><%= link_to icon('home fa-2x'), root_path %></div>	  
-	 <div id="c"><%= link_to icon('sign-in fa-2x'), users_login_path %></div>
-	 
-	</div>
-	<script src="http://threejs.org/build/three.min.js"></script>
-</header>
-</nav>
-
-<div class="animation">
-
-		<script src="http://threejs.org/build/three.min.js"></script>
-
-		<script>
-
 			var mouseX = 0, mouseY = 0,
 
 			windowHalfX = window.innerWidth / 2,
@@ -59,8 +20,7 @@
 				container = document.createElement('div');
 				document.body.appendChild(container);
 
-				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 10000 );
-
+				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
 				camera.position.z = 100;
 
 				scene = new THREE.Scene();
@@ -95,8 +55,7 @@
 					particle.position.z = Math.random() * 2 - 1;
 					particle.position.normalize();
 					particle.position.multiplyScalar( Math.random() * 10 + 450 );
-
-					particle.scale.x = particle.scale.y = 15;
+					particle.scale.x = particle.scale.y = 10;
 					scene.add( particle );
 
 					geometry.vertices.push( particle.position );
@@ -105,11 +64,10 @@
 
 				// lines
 
-
-				var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0xffffff, opacity: 0.8 } ) );
+				var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0xffffff, opacity: 0.5 } ) );
 				scene.add( line );
 
-				// document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
 				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
@@ -133,23 +91,24 @@
 
 			//
 
+			function onDocumentMouseMove(event) {
 
-			// function onDocumentMouseMove(event) {
-			// 	mouseX = event.clientX - windowHalfX;
-			// 	mouseY = event.clientY - windowHalfY;
+				mouseX = event.clientX - windowHalfX;
+				mouseY = event.clientY - windowHalfY;
 
-			// }
+			}
 
 			function onDocumentTouchStart( event ) {
 
 				if ( event.touches.length > 1 ) {
 
+					event.preventDefault();
 
-					// event.preventDefault();
+					mouseX = event.touches[ 0 ].pageX - windowHalfX;
+					mouseY = event.touches[ 0 ].pageY - windowHalfY;
 
-					// mouseX = event.touches[ 0 ].pageX - windowHalfX;
-					// mouseY = event.touches[ 0 ].pageY - windowHalfY;
 				}
+
 			}
 
 			function onDocumentTouchMove( event ) {
@@ -162,8 +121,13 @@
 					mouseY = event.touches[ 0 ].pageY - windowHalfY;
 
 				}
+
 			}
+
+			//
+
 			function animate() {
+
 				requestAnimationFrame( animate );
 
 				render();
@@ -171,26 +135,28 @@
 			}
 
 			function render() {
-					camera.position.x -= 0.3
-					camera.position.y +=0.3
-					camera.position.z -= 0.3
+				  var time = Date.now() * 0.0000005;
+				  for ( i = 0; i < scene.children.length; i ++ )
+				  camera.position.x += ( mouseX - camera.position.x ) * .05;
+					camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
 					camera.lookAt(scene.position);
+  // camera.position.x += ( mouseX - camera.position.x ) * 0.10 * time;
+  // camera.position.y += ( - mouseY - camera.position.y ) * 0.10;
+  // camera.lookAt(scene.position);
+//   for ( i = 0; i < scene.children.length; i ++ ) {
+//     var object = scene.children[i];
+//     object.rotation.x = time * i*1;
+//     object.rotation.y = time * i*1;
+//     object.rotation.z = time * i*5;
+//     particle.rotation = time * i*5;
+//   }
+//   renderer.render(scene, camera);
+// }
+
+				// camera.position.x += ( mouseX - camera.position.x ) * .05;
+				// camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
+			// 	camera.lookAt( scene.position );
+
 				renderer.render( scene, camera );
 
 			}
-</script>
-</div>
-<div id="welcome">
-
-	<h3>expand your knowledge </h3>
-	<h3>and visualize your interests</h3>
-	<h3>with thoughtly</h3><br>
-	<button><%= link_to "get started>>", users_login_path %></button><br><br>
-</div>
-
-</div>
-
-
-	</body>
-</html>
-
