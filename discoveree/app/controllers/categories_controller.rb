@@ -25,6 +25,7 @@ class CategoriesController < ApplicationController
   def show
     @current_user = User.find_by_id(session[:user_id])
     @category = Category.find_by_id(params[:id])
+    @summary = @category.generate_summary
     unless @current_user.id == params[:user_id].to_i
       redirect_to user_categories_path(@current_user)
     end

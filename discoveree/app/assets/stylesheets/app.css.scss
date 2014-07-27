@@ -10,6 +10,7 @@ $lightbluedark:  darken($lightblue, 30%);
 /*darken($lightblue, 30%) replaces #273A4F*/
 $headerblue:     #273A4F;
 $headershadow:   #060E18;
+$link: #6CF22E;
 
 $visited:        lighten(orange, 30%);
 /*need to use jquery for font resizing*/
@@ -157,6 +158,8 @@ button {
   color: $textcolor;
   font-family: $font-stack;
 }
+
+
 
 button:hover {
   border-top-color: $primary-color;
