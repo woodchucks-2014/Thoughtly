@@ -26,5 +26,17 @@ class CategoriesController < ApplicationController
     Content.generate(@category, @user) if @category.save
   end
 
+  def show
+    p "*"*10
+    p params
+    @current_user = User.find_by_id(session[:user_id])
+    @user = User.find_by_id(params[:user_id])
+    if @current_user.id != @user.id
+      redirect_to user_categories_path(@current_user)
+    else
+      @category = Category.find_by_id(params[:id])
+    end
+  end
+
 end
 

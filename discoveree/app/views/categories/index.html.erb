@@ -10,16 +10,13 @@
 
 <nav id="nav">
 </nav>
-
-	<div id="typography">
-	<div class="container"><%= link_to "Content", user_categories_path(1) %></div></a>
+	<% @user.categories.each do |category| %>
+		<div class="container"><%= link_to category.name, user_category_path(@user, category) %></div>
+	<% end %>
 	<div class="container">Content Content</div>
 
 </body>
 
-<% @user.categories.each do |category| %>
-  <h2><%= category.name %></h2>
-  <ul><% category.contents.each do |content| %>
-	 <li><%= content.url %></li>
-  <% end %></ul>
-<% end %>
+
+  <h2></h2>
+
