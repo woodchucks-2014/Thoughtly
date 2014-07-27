@@ -11,7 +11,7 @@ html {
 
 
 body {
-  background-image:url('lines.png');
+  /*background-image:url('lines.png');*/
   background-size: 100%;
   background-repeat: no-repeat;
   /*background: $primary-color;*/
@@ -24,7 +24,7 @@ body {
   width: 100%;
   position: fixed;
   background: -webkit-linear-gradient(transparent 5%, $darkblue);
-  z-index: -1;
+  z-index: 1;
 }
 
 header {
