@@ -1,9 +1,18 @@
+$font-stack:    'Ubuntu', sans-serif;
+$primary-color: #385371;
+$dark-primary: darken( $primary-color, 5% );
+
+
 html {
   height: 100%;
 }
 
+
 body {
-  background: #385371;
+  background-image:url('lines.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  /*background: $primary-color;*/
   overflow:scroll;
   position:relative;
 }
@@ -12,7 +21,7 @@ body {
   height: 100%;
   width: 100%;
   position: fixed;
-  background: -webkit-linear-gradient(transparent 40%, #07121c);
+  background: -webkit-linear-gradient(transparent 5%, #07121c);
   z-index: -1;
 }
 
@@ -30,7 +39,7 @@ header {
 }
 
 h1, h2, h3 {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: $font-stack;
   text-shadow: 0 0 0.2em #bbdaf9
 }
 
@@ -61,7 +70,7 @@ a {
   margin: 1em;
   padding: 1em;
   overflow: auto;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: $font-stack;
   color: #80c1ff;
   text-decoration:none;
 }
@@ -87,7 +96,7 @@ a {
 
 form {
   text-align: center;
-  background-color: #07121c;
+  background-color: $dark-primary;
   display: block;
   width: 300px;
   margin: 0 auto;
@@ -104,15 +113,15 @@ form {
 }
 
 button {
-  background: -webkit-linear-gradient(top, #bbdaf9, #385371);
+  background: -webkit-linear-gradient(top, #bbdaf9, $primary-color);
   background-color: #323a40;
-  padding: px 15px;
+  padding: 5px 15px;
   color: white;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: $font-stack;
 }
 
 button:hover {
-  border-top-color: #385371;
+  border-top-color: $primary-color;
   background: #7a7a8a;
 }
 

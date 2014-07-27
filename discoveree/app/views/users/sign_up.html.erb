@@ -1,14 +1,30 @@
+<body>
+<div id="fade">
+</div>
+
+ <nav> 	
+<header>
+  <h1>thoughtly.io</h1>
+	<div id="fa">
+	 <div id="a"><%= link_to icon('home fa-2x'), root_path %></div>	  
+	 <div id="c"><%= link_to icon('sign-in fa-2x'), users_login_path %></div>
+	</div>
+</header>
+
+</nav>
+</div>
+
 <%= flash[:notice] %>
     <%= form_for :user,  url: {action: "create"} do |f| %>
- 
-    <%= f.label :email, "Email" %><br />
+ <h3>welcome, thinker</h3>
+    <%#= f.label :email, "Email" %><br/>
     <%= f.text_field :email, placeholder: "You@domain.com" %><br>
  
-    <%= f.label :password %><br />
-    <%= f.password_field :password, placeholder: "Password"  %><br>
+    <%#= f.label :password %><br/>
+    <%= f.password_field :password, placeholder: "Password"  %><br><br>
  
     <div class="text-center">
-      <%= f.submit "Sign Me Up!"%>
+      <button><%= f.submit "Sign Me Up!"%></button><br><br>
     </div>
  
 <% end %>
