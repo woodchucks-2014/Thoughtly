@@ -5,4 +5,4 @@ $(window).on("scroll", function () {
   else {
       $("header").fadeOut().addClass("show");
   }
-});          
+});

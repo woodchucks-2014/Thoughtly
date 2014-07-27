@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	include UserHelper
+  include UserHelper
 
   def index
     check_sign_in
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     end
   end
 
- @user
+
   def show
     check_sign_in
     redirect_to user_categories_path(@user)
