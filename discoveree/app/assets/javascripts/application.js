@@ -12,5 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery_visible
 //= require turbolinks
+//= require renderer
+//= require nodegraph
+//= require arbor
+//= require arbor-tween
+
 //= require_tree .
+
+
+
+

@@ -13,8 +13,10 @@ class CategoriesController < ApplicationController
   def create
     @user = User.authenticate(params[:email], params[:password])
     if @user
-      @category_name = Category.analyze_url(params[:url])
-      @category = Category.new(name: @category_name)
+      # @category_name = Category.analyze_url(params[:url])
+      # @category = Category.new(name: @category_name)
+      @category_array = Category.analyze_url(params[:url])
+      @category = Category.new(name: @category_array[0])
       render :json => { message: "Creating a briefing on: " + @category.name + "..." }
     else
       render :json => { message: "Oops! Looks like you need to sign up first." }
@@ -25,6 +27,7 @@ class CategoriesController < ApplicationController
   def show
     @current_user = User.find_by_id(session[:user_id])
     @category = Category.find_by_id(params[:id])
+    @summary = @category.generate_summary
     unless @current_user.id == params[:user_id].to_i
       return redirect_to user_categories_path(@current_user)
     end
@@ -33,4 +36,17 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def nodegraph
+    # array = []
+    # 999.times do
+    #   array << (1..1000).to_a.sample.to_s
+    # end
+    render :json => {related_categories:
+      ["blue", "red", "green", "yellow", "pink", "purple", "blue", "fuschia", "shuff", "magenta", "green", "orange"]
+      }.to_json
+     # render :json = > {related_categories: array}.to_json
+
+  end
+
 end
+
