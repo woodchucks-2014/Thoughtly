@@ -27,6 +27,7 @@ body {
   position:relative;
 }
 
+/*this is the transparent overlay, if things aren't working check out its z index*/
 #fade{
   height: 100%;
   width: 100%;
@@ -78,6 +79,7 @@ a:visited {
   text-decoration: none; color:$visited; 
 }
 
+/*for contents*/
 .container {
   border: 1px dotted;
   border-left:none;
@@ -98,10 +100,12 @@ a:visited {
   text-shadow: 0 0 0.2em $lightblue;
 }
 
+/*generic id for adding margin, can be redone*/
 #typography {
   margin-top: 3em;
 }
 
+/*font awesome*/
 #fa {
   text-align:left;
 }
@@ -109,6 +113,7 @@ a:visited {
   text-shadow: 0 0 0.2em $lightblue
 }
 
+/*welcome box on homepage*/
 #welcome {
   text-align: center;
   background-color: $dark-primary;
@@ -128,6 +133,7 @@ a:visited {
 
 }
 
+/*sign in and sign out*/
 form {
   text-align: center;
   background-color: $dark-primary;
