@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	alert("JQuery Connected, Arbor.js Connected");
 
 	var sys = arbor.ParticleSystem(1000, 30, 40)
 	sys.parameters({gravity:true})
@@ -21,7 +20,6 @@ $(document).ready(function(){
 	 		nodeCreate(node_array)
 	 	}
 	 });
-
 	// var red = sys.addNode('Red',{'color':'red', 'shape':'dot', 'label':'red'});
 	// var blue = sys.addNode('Blue',{'color':'blue', 'shape':'dot', 'label':'blue'});
 	// 	sys.addEdge(red, blue);
