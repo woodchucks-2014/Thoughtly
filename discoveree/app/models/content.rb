@@ -2,9 +2,9 @@ class Content < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   require 'open-uri'
-  require 'wikipedia'
-  require 'google/api_client'
-  require 'trollop'
+  # require 'wikipedia'
+  # require 'google/api_client'
+  # require 'trollop'
 
   def self.youtube_search(query)
     youtube_service_api_name = "youtube"
@@ -80,7 +80,6 @@ class Content < ActiveRecord::Base
     "nytimes" => Content.new_york_times(query),
     "ted" => Content.ted_search(query),
     "wikipedia" => Content.wikipedia_search(query) }
-    p "****"*10
     user.categories << category
     results.each_pair do |source, contents|
       unless contents == nil
