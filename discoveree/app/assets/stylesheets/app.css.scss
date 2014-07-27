@@ -117,15 +117,12 @@ a:visited {
 #welcome {
   text-align: center;
   background-color: $dark-primary;
-  display: block;
   width: 300px;
-  height: 30%;
   position: absolute;
-  top: 40%; left: 0; bottom: 0; right: 0;
+  top: 40%; left: 0; right: 0;
   margin: 0 auto;
   border: 1px solid $darkblue;
   z-index: 10;
-  text-align: center;
   border-radius: 5px;
     -webkit-box-shadow: 0 8px 6px -6px black;
      -moz-box-shadow: 0 8px 6px -6px black;
@@ -143,7 +140,6 @@ form {
   top: 100px;
   margin: 0 auto;
   border: 1px solid $darkblue;
-  text-align: center;
   padding-top: 30px;
   border-radius: 5px;
     -webkit-box-shadow: 0 8px 6px -6px black;
