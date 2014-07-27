@@ -86,6 +86,10 @@ a {
   margin-top: 3em;
 }
 
+#contents {
+  width: 65%;
+}
+
 #fa {
 	text-align: center;
 	text-decoration: none;

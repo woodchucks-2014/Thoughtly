@@ -80,7 +80,8 @@ class Content < ActiveRecord::Base
     "nytimes" => Content.new_york_times(query),
     "ted" => Content.ted_search(query),
     "wikipedia" => Content.wikipedia_search(query) }
-    p "****"*10
+    p "*"*20
+    p results
     user.categories << category
     results.each_pair do |source, contents|
       unless contents == nil
