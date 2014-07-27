@@ -6,19 +6,12 @@
 	</div>
 </header>
 
-<body>
-<div id="typography">
-<% @user.categories.each do |category| %>
-	<div class="container"><%#= link_to category.name, user_categories_path(1) %>HELLO</div></a>
-	<div class="container">Content Content</div>
-</div>
-<% end %>
+<nav id="nav">
+</nav>
+	<% @user.categories.each do |category| %>
+		<div class="container"><%= link_to category.name, user_category_path(@user, category) %></div>
+	<% end %>
+
 </body>
 
-<% @user.categories.each do |category| %>
-  <h2><%= category.name %></h2>
-  <ul><% category.contents.each do |content| %>
-	 <li><%= content.url %></li>
-  <% end %></ul>
-<% end %>
 
