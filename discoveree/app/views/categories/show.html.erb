@@ -1,6 +1,8 @@
 <h2><%= @category.name %></h2>
 <div id="contents">
 	<ul><% @category.contents.each do |content| %>
-		<li class="container"><%= link_to content.url, content.url %></li>
+		<% unless content.url == nil %>
+			<li class="container"><%= link_to content.url, content.url %></li>
+		<% end %>
 	<% end %></ul>
 </div>
