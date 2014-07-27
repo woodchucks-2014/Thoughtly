@@ -35,10 +35,7 @@ class UsersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
- @user
-=======
->>>>>>> node_test
+
   def show
     check_sign_in
     redirect_to user_categories_path(@user)
