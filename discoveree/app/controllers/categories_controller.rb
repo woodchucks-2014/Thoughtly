@@ -13,16 +13,20 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: "rjny@wiggidy.com")
-    @category_name = Category.analyze_url(params[:url])
-    @category = Category.new(name: @category_name)
-    if @category.save
-      # @content = Content.generate(@category, @user)  To do - See Content model. This will return content we find for a given category.
-      @user.categories << @category
-    else
-      @content = Content.generate(@category, @user)
+    @user = User.authenticate(params[:email], params[:password])
+    if @user
+      @category_name = Category.analyze_url(params[:url])
+      p @category_name
+      p "*"*100
+      @category = Category.new(name: @category_name)
+    else 
+      render :json => { message: "Oops! Looks like you need to sign up first." }
     end
-    render :json => { category: @category.name }
+    if @category.save
+      @user.categories << @category
+      # @content = Content.generate(@category, @user)  To do - See Content model. This will return content we find for a given category.
+    end
+    render :json => { message: "Created a briefing on: " + @category.name }
   end
 
 end
