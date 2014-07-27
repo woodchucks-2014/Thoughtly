@@ -13,10 +13,8 @@ class CategoriesController < ApplicationController
   def create
     @user = User.authenticate(params[:email], params[:password])
     if @user
-      @category_name = Category.analyze_url(params[:url])
-      @category = Category.new(name: @category_name)
-      p @category
-      p @category_name
+      @category_array = Category.analyze_url(params[:url])
+      @category = Category.new(name: @category_array[0], related_categories:@category_array[1..-1].join("%"))
       render :json => { message: "Creating a briefing on: " + @category.name + "..." }
     else
       render :json => { message: "Oops! Looks like you need to sign up first." }
@@ -35,5 +33,17 @@ class CategoriesController < ApplicationController
       render :file => "#{Rails.root}/public/404.html",  :status => 404
     end
   end
+
+  def nodegraph
+    array = []
+    999.times do
+      array << (1..1000).to_a.sample.to_s
+    end
+    # render :json => {related_categories: ["blue", "red", "green", "yellow", "pink"]}.to_json
+     render :json => {related_categories: array}.to_json
+
+  end
+
+end
 
 end
