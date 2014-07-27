@@ -40,7 +40,7 @@ gem 'hpricot'
 gem 'font-awesome-sass'
 # compatibility with Heroku
 gem 'rails_12factor'
-
+gem 'gon'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development

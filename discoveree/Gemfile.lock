@@ -77,6 +77,11 @@ GEM
     ffi (1.9.3)
     font-awesome-sass (4.1.0)
       sass (~> 3.2)
+    gon (5.1.2)
+      actionpack (>= 2.3.0)
+      json
+      multi_json
+      request_store (>= 1.0.5)
     google-api-client (0.7.1)
       addressable (>= 2.3.2)
       autoparse (>= 0.3.3)
@@ -167,6 +172,7 @@ GEM
     raphael-rails (2.1.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    request_store (1.0.7)
     rest-client (1.7.2)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
@@ -257,6 +263,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   font-awesome-sass
+  gon
   google-api-client (~> 0.7.1)
   hpricot
   htmlentities

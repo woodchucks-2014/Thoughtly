@@ -15,15 +15,17 @@ class CategoriesController < ApplicationController
   def create
     @user = User.authenticate(params[:email], params[:password])
     if @user
-      @category_name = Category.analyze_url(params[:url])
-      @category = Category.new(name: @category_name)
-      p @category
-      p @category_name
+      @category_array = Category.analyze_url(params[:url])
+      @category = Category.new(name: @category_array[0], related_categories:@category_array[1..-1].join("%"))
       render :json => { message: "Creating a briefing on: " + @category.name + "..." }
     else
       render :json => { message: "Oops! Looks like you need to sign up first." }
     end
     Content.generate(@category, @user) if @category.save
+  end
+
+  def nodegraph
+    render :json => {related_categories: ["blue", "red", "green", "yellow", "pink"]}.to_json
   end
 
 

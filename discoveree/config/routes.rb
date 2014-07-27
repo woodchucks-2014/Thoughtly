@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   end
 
   post '/categories/create' => 'categories#create'
-  get '/nodegraph' => 'users#nodegraph'
 
+  get '/categories/nodegraph' => 'categories#nodegraph'
 end
