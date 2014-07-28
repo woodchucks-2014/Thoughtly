@@ -15,7 +15,6 @@ class CategoriesController < ApplicationController
       @category_array = Category.analyze_url(params[:url])
       @related_categories = Category.format_related(@category_array)
       @category = Category.new(name: @category_array[0], related_categories: @related_categories)
-      puts @category.inspect
       render :json => { message: "Creating a briefing on: " + @category.name + "..." }
     else
       render :json => { message: "Oops! Looks like you need to sign up first." }

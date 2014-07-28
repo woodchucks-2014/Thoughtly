@@ -3,13 +3,20 @@
 }
 
 #summary {
+  margin-top: 1em;
   width: 45%;
-  border: 1px solid white;
   position: absolute;
   right: 5%;
   top: 10%;
-  color: white;
+  color: #45a4ff;
+  font-family: 'ubuntu';
+  line-height: 145%;  
+  background: #16314b;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #2C2E33;
 }
+
 
 #viewport{
 	position: relative;
