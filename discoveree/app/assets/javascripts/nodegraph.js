@@ -17,7 +17,10 @@ $(document).ready(function(){
 
 	 $.ajax({
 	 	url:"/categories/nodegraph",
-	 	type: "get",
+	 	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+	 	type: "post",
+	 	dataType: 'json',
+	 	data: {"name":$("#category_name").text()},
 	 	success: function(data) {
 	 		node_array = data['related_categories'];
 	 		nodeCreate(node_array)
