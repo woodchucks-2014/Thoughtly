@@ -2,8 +2,19 @@ class UsersController < ApplicationController
   include UserHelper
 
   def index
-    # check_sign_in #commented these out because of redirect loop
-    # redirect_to user_categories_path(@user)
+    redirect_to :root
+  #   if check_sign_in
+  #     @current_user = User.find(session[:user_id])
+  #     redirect_to user_categories_path(@current_user)
+  #   else
+  #     # idealy sends them back to login
+  #     # render root_path
+  #   end
+  #   # if session[:user_id]
+  #   #   redirect_to user_categories_path(@current_user)
+  #   # end
+  #   # # check_sign_in #commented these out because of redirect loop
+  #   # # redirect_to user_categories_path(@user)
   end
 
   def sign_in_page
@@ -21,7 +32,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_categories_path(@user), flash: {notice: "Successful log in!"}
     else
-      redirect_to users_login_path, flash: {notice: 'Invalid credentials!' }
+      redirect_to :root, flash: {notice: 'Invalid credentials!' }
     end
   end
 
@@ -38,7 +49,7 @@ class UsersController < ApplicationController
 
   def show
     check_sign_in
-    redirect_to user_categories_path(@user)
+    redirect_to user_categories_path(@current_user)
   end
 
   def destroy
