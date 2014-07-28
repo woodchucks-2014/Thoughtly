@@ -4,14 +4,14 @@
 <div id="summary">
 	<%= @summary %>
 </div>
-	
+
 	<ul><% @category.contents.each do |content| %>
 		<% unless content.url == nil %>
 			<li class="container"><%= link_to content.url, content.url %></li>
 		<% end %>
 	<% end %></ul>
+<canvas id="viewport" height="800" width="800"></canvas>
 
-<canvas id="viewport" height="450" width="450"></canvas>
 </div>
 
 

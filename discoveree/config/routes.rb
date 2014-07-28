@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   post '/categories/create' => 'categories#create'
 
   post '/categories/nodegraph' => 'categories#nodegraph'
+
+  get "/categories/childnodes" => 'categories#childnodes'
+
+  get '*missing' => redirect('/')
 end
