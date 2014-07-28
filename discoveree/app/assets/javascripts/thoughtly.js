@@ -11,6 +11,9 @@ $(function(){
 		})
 	})
 
+})
+
+$(function(){
 	$('#welcome').on("click", '.event', function(e){
 		e.preventDefault();
 		$.ajax({
@@ -22,5 +25,5 @@ $(function(){
 			}
 		})
 	})
-
+	
 })
