@@ -2,9 +2,9 @@ class UsersController < ApplicationController
   include UserHelper
 
   def index
-    check_sign_in
+    # check_sign_in
     # if session[:user_id]
-    #   redirect_to user_categories_path(@user)
+    #   redirect_to user_categories_path(@current_user)
     # end
     # # check_sign_in #commented these out because of redirect loop
     # # redirect_to user_categories_path(@user)
