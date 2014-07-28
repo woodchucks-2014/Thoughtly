@@ -1,17 +1,4 @@
-<body>
 <div id="fade">
-</div>
-
- <nav> 	
-<header>
-  <h1>thoughtly.io</h1>
-	<div id="fa">
-	 <div id="a"><%= link_to icon('home fa-2x'), root_path %></div>	  
-	 <div id="c"><%= link_to icon('sign-in fa-2x'), users_login_path %></div>
-	</div>
-</header>
-
-</nav>
 </div>
 
 <%= form_for :user,  url: {action: "login"} do |f| %>
@@ -20,5 +7,4 @@
     <%= f.password_field :password, placeholder: "Password"  %><br><br>
       <button id="button"><%= f.submit "Sign Me In!"%></button><br>
     <%= link_to 'or create a new account', users_signup_path %><br><br>
- 
 <% end %>

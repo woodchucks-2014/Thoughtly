@@ -1,13 +1,5 @@
-$(document).ready(function(){
-	$("#sign_up").click(function(e){
-		e.preventDefault();
-		alert("Success");
-	});
-});
-
-
 $(function(){
-	$('#start').click(function(e){
+	$('#get_started').click(function(e){
 		e.preventDefault();
 		$.ajax({
 			type: "GET",
@@ -30,11 +22,5 @@ $(function(){
 	// 		}
 	// 	})
 	// })
-
-
-
-
-
-
 
 })

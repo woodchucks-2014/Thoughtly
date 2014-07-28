@@ -1,22 +1,8 @@
-<header>
-  <h2>mythoughtly</h2>
+<div class="container"><%= link_to "Content", user_categories_path(@current_user) %></div>
 
-	<div id="fa">
-	  <%#= link_to "", icon('home fa-2x'), root_path %></a>
-	 	<%#= link_to "", icon('sign-in fa-2x'), users_login_path %></a>
-	 	<%#= link_to icon('sign-out fa-2x'), destroy_user_session_path, :method => :delete %></a>
-	</div>
+<% @user.categories.each do |category| %>
+	<div class="container"><%= link_to category.name, user_category_path(@user, category) %></div>
+<% end %>
 
-</header>
-
-<nav id="nav">
-</nav>
-
-	<div class="container"><%= link_to "Content", user_categories_path(@current_user) %></div></a>
-
-	<% @user.categories.each do |category| %>
-		<div class="container"><%= link_to category.name, user_category_path(@user, category) %></div>
-	<% end %>
-
-</body>
+<canvas id="viewport" height="800" width="800"></canvas>
 
