@@ -32,5 +32,6 @@ $(document).ready(function(){
 
 	// var green = sys.addNode('Green',{'color':'green', 'shape': 'dot', 'label':'green', 'link':"http://www.wikipedia.org/"});
 	// 	sys.addEdge(red, green);
+
 	};
 });
