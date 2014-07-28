@@ -1,6 +1,6 @@
 $font-stack:    'Ubuntu', sans-serif;
 
-$primary-color:  #385371;
+$primary-color:  #0e1e2c;
 $dark-primary:   darken( $primary-color, 5% );
 $textcolor:      white;
 
@@ -12,7 +12,7 @@ $headerblue:     #273A4F;
 $headershadow:   #060E18;
 $link: #6CF22E;
 
-$visited:        lighten(orange, 30%);
+$visited:        white;
 /*need to use jquery for font resizing*/
 
 html {
@@ -33,7 +33,7 @@ body {
   height: 100%;
   width: 100%;
   position: fixed;
-  background: -webkit-linear-gradient(transparent 80%, $darkblue);
+  background: -webkit-linear-gradient(transparent 40%, $darkblue);
 }
 
 header {
@@ -42,7 +42,6 @@ header {
   color: $textcolor;
   top: 0;
   padding-left: 20px;
-  padding-top: 5px;
   position: fixed;
   clear: both;
   width: 100%;
@@ -71,15 +70,27 @@ h3 {
   font-size: 1.25em;
   font-family: $font-stack;
   font-weight: 200;
-  color: $textcolor;
+  color: #45a4ff;
+}
+
+#get_started a {
+  text-decoration: none;
+  color: #44E357;
+}
+
+#get_started a:visited { 
+  text-decoration: none; 
+  color: #44E357;
 }
 
 a {
   text-decoration: none;
+  color: #44E357;
 }
 
 a:visited { 
-  text-decoration: none; color: $visited; 
+  text-decoration: none; 
+  color: $visited;
 }
 
 /*for contents*/
@@ -119,19 +130,23 @@ a:visited {
 /*welcome box on homepage*/
 #welcome {
   text-align: center;
-  background-color: $dark-primary;
-  width: 300px;
+  background-color: $primary-color;
+  width: 400px;
+  margin: 0 auto;
+  color: #45a4ff ;
+  padding-top: 40px;
+  padding-bottom: 40px;
   position: absolute;
   top: 40%; left: 0; right: 0;
   margin: 0 auto;
-  border: 1px solid $darkblue;
+  border: 1px solid #22486E;
   z-index: 10;
   border-radius: 5px;
     -webkit-box-shadow: 0 8px 6px -6px black;
      -moz-box-shadow: 0 8px 6px -6px black;
           box-shadow: 0 8px 6px -6px black;
-
 }
+
 
 /*sign in and sign out*/
 #signin {
@@ -152,19 +167,43 @@ a:visited {
 }
 
 button {
-  background: -webkit-linear-gradient(top, $lightblue, $primary-color);
-  background-color: #323a40;
+  border: 1px solid white;
   padding: 5px 15px;
-  color: $textcolor;
+  color: #0EE31C;
+  background-color: #193149;
   font-family: $font-stack;
 }
 
-
-
-button:hover {
-  border-top-color: $primary-color;
-  background: #7a7a8a;
+button:hover {  
+  text-shadow: 0 0 0.01em white;
 }
+
+nav li {
+  list-style-type: none;
+  display: block;
+  float: right;
+  padding: 10px;
+
+  margin-right: 2%;
+}
+
+nav {
+  border: 1px solid #22486E;
+  height: 40px;
+  width: 100%;
+  padding: 15px;
+  background: #16314b;
+}
+
+nav #title {
+  float: left;
+  vertical-line-height: 5px;
+  font-family: 'ubuntu';
+  color: #45a4ff;
+  text-shadow: 0 0 0.05em $lightblue;
+  font-size: 32px;
+}
+
 
 #user_email {
   background-color: $textcolor;

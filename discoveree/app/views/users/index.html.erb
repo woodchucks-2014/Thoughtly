@@ -19,17 +19,10 @@
 <div id="fade">
 </div>
 
- <nav> 	
-<header>
-  <h1>thoughtly.io</h1>
-	<div id="fa">
-	 <div id="a"><%= link_to icon('home fa-2x'), root_path %></div>	  
-	 <div id="c"><%= link_to icon('sign-in fa-2x'), users_login_path %></div>
-	 
-	</div>
-	<script src="http://threejs.org/build/three.min.js"></script>
-</header>
-</nav>
+	<header>
+	<script src="http://threejs.org/build/three.min.js"></script>	
+	</header>
+
 
 <div class="animation">
 
@@ -84,7 +77,6 @@
 					}
 
 				} );
-
 				var geometry = new THREE.Geometry();
 
 				for ( var i = 0; i < 100; i ++ ) {
@@ -169,7 +161,6 @@
 				render();
 
 			}
-
 			function render() {
 					camera.position.x -= 0.3
 					camera.position.y +=0.3
@@ -185,7 +176,7 @@
 	<h3>expand your knowledge </h3>
 	<h3>and visualize your interests</h3>
 	<h3>with thoughtly</h3><br>
-	<button id="start"><%= link_to "get started>>", users_login_path %></button><br><br>
+	<button id="get_started"><%= link_to "get started >>", users_login_path %></button><br><br>
 </div>
 
 </div>

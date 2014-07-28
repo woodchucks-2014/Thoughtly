@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     # check_sign_in #commented these out because of redirect loop
-    redirect_to user_categories_path(@user)
+    # redirect_to user_categories_path(@user)
   end
 
   def sign_in_page
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def sign_up_page
-  	render :sign_up
+  	render :sign_up, :layout => false
   end
 
   def login
