@@ -1,4 +1,4 @@
-<div id="welcome">
+<!-- <div id="welcome"> -->
 <%= form_for :user, :html=> { :id => "hello"}, url: {action: "login"} do |f| %>
 	<h3>welcome, thinker</h3><br>
     <%= f.text_field :email, placeholder: "Email" %><br><br>
@@ -7,4 +7,3 @@
     <%= link_to 'or create a new account', users_signup_path, :class => "event" %><br><br>  
 <% end %>
 </div>
-<script>nodes()</script>
