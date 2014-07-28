@@ -1,5 +1,5 @@
 <div class="container"><%= link_to "Content", user_categories_path(@current_user) %></div>
 
-<% @user.categories.each do |category| %>
-	<div class="container"><%= link_to category.name, user_category_path(@user, category) %></div>
+<% @current_user.categories.each do |category| %>
+	<div class="container"><%= link_to category.name, user_category_path(@current_user, category) %></div>
 <% end %>

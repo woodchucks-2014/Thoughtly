@@ -63,7 +63,7 @@ class Content < ActiveRecord::Base
 
   def self.ted_search(query)
     url = "https://api.ted.com/v1/search.json?q=" + query + "&categories=talks&api-key=" + ENV['TED_API_KEY']
-    url =  URI.encode(url)
+    url = URI.encode(url)
     response = HTTParty.get(url)
     videos = []
     response["results"].each do |result|

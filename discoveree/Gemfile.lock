@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/ecbypi/dotenv.git
+  revision: 4cafc36c0c36a0eb243a37d2e18d26be3dab3d43
+  branch: overload-environment-variables
+  specs:
+    dotenv (0.9.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -61,11 +68,6 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    dotenv (0.11.1)
-      dotenv-deployment (~> 0.0.2)
-    dotenv-deployment (0.0.2)
-    dotenv-rails (0.11.1)
-      dotenv (= 0.11.1)
     erubis (2.7.0)
     execjs (2.2.1)
     extlib (0.9.16)
@@ -267,7 +269,7 @@ DEPENDENCIES
   d3-rails
   database_cleaner
   devise
-  dotenv-rails
+  dotenv!
   factory_girl_rails
   font-awesome-sass
   gon
