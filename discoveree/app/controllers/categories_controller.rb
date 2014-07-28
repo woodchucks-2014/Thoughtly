@@ -14,7 +14,9 @@ class CategoriesController < ApplicationController
     @user = User.authenticate(params[:email], params[:password])
     if @user
       @category_array = Category.analyze_url(params[:url])
-      @category = Category.new(name: @category_array[0])
+      @related_categories = Category.format_related(@category_array)
+      @category = Category.new(name: @category_array[0], related_categories: @related_categories)
+      puts @category.inspect
       render :json => { message: "Creating a briefing on: " + @category.name + "..." }
     else
       render :json => { message: "Oops! Looks like you need to sign up first." }
@@ -27,7 +29,7 @@ class CategoriesController < ApplicationController
     @category = Category.find_by_id(params[:id])
     @summary = @category.generate_summary
     unless @current_user.id == params[:user_id].to_i
-      redirect_to user_categories_path(@current_user)
+      redirect_to user_categories_path(@current_user, @category)
     end
     unless Category.exists?(params[:id])
       render :file => "#{Rails.root}/public/404.html",  :status => 404
@@ -35,14 +37,16 @@ class CategoriesController < ApplicationController
   end
 
   def nodegraph
+    @category = Category.find_by(name: params["name"])
+    render :json => {related_categories: @category.related_categories.split("%")}.to_json
     # array = []
     # 999.times do
     #   array << (1..1000).to_a.sample.to_s
     # end
-    render :json => {related_categories: 
-      ["blue", "red", "green", "yellow", "pink", "purple", "blue", "fuschia", "shuff", "magenta", "green", "orange"]
-      }.to_json
-     # render :json = > {related_categories: array}.to_json
+    # render :json => {related_categories:
+    #   ["blue", "red", "green", "yellow", "pink", "purple", "blue", "fuschia", "shuff", "magenta", "green", "orange"]
+    #   }.to_json
+    # render :json => {related_categories: array}.to_json
 
   end
 
