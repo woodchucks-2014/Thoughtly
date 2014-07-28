@@ -2,9 +2,9 @@ class Content < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   require 'open-uri'
-  # require 'wikipedia'
-  # require 'google/api_client'
-  # require 'trollop'
+  require 'wikipedia'
+  require 'google/api_client'
+  require 'trollop'
 
   def self.youtube_search(query)
     youtube_service_api_name = "youtube"
@@ -13,14 +13,17 @@ class Content < ActiveRecord::Base
       opt :q, 'Search term', :source => String, :default => query
       opt :maxResults, 'Max results', :source => :int, :default => 25
     end
+
     client = Google::APIClient.new(:key => ENV['YOUTUBE_DEVELOPER_KEY'],
      :authorization => nil)
+
     youtube = client.discovered_api(youtube_service_api_name, youtube_api_version)
     opts[:part] = 'id,snippet'
     search_response = client.execute!(
       :api_method => youtube.search.list,
       :parameters => opts
       )
+
     videos = []
     search_response.data.items.each do |search_result|
       case search_result.id.kind
@@ -28,6 +31,7 @@ class Content < ActiveRecord::Base
         videos.push("http://www.youtube.com/watch?v=#{search_result.id.videoId})")
       end
     end
+    
     return videos[0..2]
   end
 
@@ -59,7 +63,7 @@ class Content < ActiveRecord::Base
 
   def self.ted_search(query)
     url = "https://api.ted.com/v1/search.json?q=" + query + "&categories=talks&api-key=" + ENV['TED_API_KEY']
-    url =  URI.encode(url)
+    url = URI.encode(url)
     response = HTTParty.get(url)
     videos = []
     response["results"].each do |result|

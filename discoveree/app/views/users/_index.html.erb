@@ -1,21 +1,34 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body {
+				background-color: #000000;
+				margin: 0px;
+				overflow: hidden;
+			}
+
+			a {
+				color:#0078ff;
+			}
+		</style>
+	</head>
+
 <body>
 <div id="fade">
 </div>
 
- <nav> 	
-<header>
-  <h1>thoughtly.io</h1>
-	<div id="fa">
-	 <div id="a"><%= link_to icon('home fa-2x'), root_path %></div>	  
-	 <div id="c"><%= link_to icon('sign-in fa-2x'), users_login_path %></div>
-	 
-	</div>
+	<header>
 	<script src="http://threejs.org/build/three.min.js"></script>
-</header>
-</nav>
+	</header>
+
 
 <div class="animation">
-<script>
+
+		<script src="http://threejs.org/build/three.min.js"></script>
+
+		<script>
 
 			var mouseX = 0, mouseY = 0,
 
@@ -40,6 +53,7 @@
 				document.body.appendChild(container);
 
 				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 10000 );
+
 				camera.position.z = 100;
 
 				scene = new THREE.Scene();
@@ -63,7 +77,6 @@
 					}
 
 				} );
-
 				var geometry = new THREE.Geometry();
 
 				for ( var i = 0; i < 100; i ++ ) {
@@ -74,6 +87,7 @@
 					particle.position.z = Math.random() * 2 - 1;
 					particle.position.normalize();
 					particle.position.multiplyScalar( Math.random() * 10 + 450 );
+
 					particle.scale.x = particle.scale.y = 15;
 					scene.add( particle );
 
@@ -82,6 +96,7 @@
 				}
 
 				// lines
+
 
 				var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0xffffff, opacity: 0.8 } ) );
 				scene.add( line );
@@ -110,6 +125,7 @@
 
 			//
 
+
 			// function onDocumentMouseMove(event) {
 			// 	mouseX = event.clientX - windowHalfX;
 			// 	mouseY = event.clientY - windowHalfY;
@@ -119,6 +135,7 @@
 			function onDocumentTouchStart( event ) {
 
 				if ( event.touches.length > 1 ) {
+
 
 					// event.preventDefault();
 
@@ -140,10 +157,10 @@
 			}
 			function animate() {
 				requestAnimationFrame( animate );
+
 				render();
 
 			}
-
 			function render() {
 					camera.position.x -= 0.3
 					camera.position.y +=0.3
@@ -155,10 +172,16 @@
 </script>
 </div>
 <div id="welcome">
+
 	<h3>expand your knowledge </h3>
 	<h3>and visualize your interests</h3>
 	<h3>with thoughtly</h3><br>
-	<button><%= link_to "get started>>", users_login_path %></button><br><br>
+	<button id="get_started"><%= link_to "get started >>", users_login_path %></button><br><br>
 </div>
 
 </div>
+
+
+	</body>
+</html>
+

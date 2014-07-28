@@ -1,15 +1,12 @@
-<!-- <body>
-<div id="fade">
+<nav>
+<div id="title">thoughtly.io</div>
+<div id="fa">
+	<ul>
+    <% if @current_user %>
+    <li id="c"><%= link_to icon('sign-in fa-2x'), logout_path(@current_user) %></li>
+    <% end %>
+    <li id="a"><%= link_to icon('home fa-2x'), root_path %></li>
+    <li>Session: <%= session[:user_id] %></li>
+  </ul>
 </div>
-
- <nav> 	
-<header>
-  <h1>thoughtly.io</h1>
-	<div id="fa">
-	 <div id="a"><%= link_to icon('home fa-2x'), root_path %></div>	  
-	 <div id="c"><%= link_to icon('sign-in fa-2x'), users_login_path %></div>
-	</div>
-</header>
-
 </nav>
-</div> -->

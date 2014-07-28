@@ -1,12 +1,26 @@
 #contents {
-  width: 60%;
+  width: 45%;
 }
 
 #summary {
-  width: 30%;
-  border: 1px solid white;
+  margin-top: 1em;
+  width: 45%;
   position: absolute;
   right: 5%;
   top: 10%;
-  color: white;
+  color: #45a4ff;
+  font-family: 'ubuntu';
+  line-height: 145%;  
+  background: #16314b;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #2C2E33;
+}
+
+
+#viewport{
+	position: relative;
+	border: 1px solid black;
+	position: absolute;
+	right: 5%;
 }
