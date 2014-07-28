@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
       render :json => { message: "Oops! Looks like you need to sign up first." }
     end
     Content.generate(@category, @user) if @category.save
-    render :json => { message: "Created a briefing on: " + @category.name + ". ", anchor: "http://127.0.0.1:3000#{user_category_path(@user, @category)}" }
+    render :json => { message: "Created a briefing on: " + @category.name + ". ", anchor: "http://localhost:3000#{user_category_path(@user, @category)}" }
   end
 
   def show
