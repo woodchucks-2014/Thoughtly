@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'users#index'
+  root to: 'welcome#index'
   get '/users/login', to: 'users#sign_in_page'
   post '/users/login', to: 'users#login'
   get '/users/signup', to: 'users#sign_up_page'
@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 
   post '/categories/nodegraph' => 'categories#nodegraph'
 
+
   get "/categories/childnodes" => 'categories#childnodes'
 
   get '*missing' => redirect('/')
+
 end
