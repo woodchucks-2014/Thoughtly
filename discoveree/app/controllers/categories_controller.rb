@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @user = User.authenticate(params[:email], params[:password])
+    @user = User.authenticate(params[:extension_email], params[:extension_password])
     if @user
       @category_array = Category.analyze_url(params[:url])
       @category = Category.new(name: @category_array[0], related_categories: @category_array[1..-1])
@@ -20,6 +20,7 @@ class CategoriesController < ApplicationController
       render :json => { message: "Oops! Looks like you need to sign up first." }
     end
     Content.generate(@category, @user) if @category.save
+    render :json => { message: "Created a briefing on: " + @category.name + ". ", anchor: "http://localhost:3000#{user_category_path(@user, @category)}" }
   end
 
   def show
@@ -36,6 +37,7 @@ class CategoriesController < ApplicationController
   end
 
   def nodegraph
+    puts params["name"]
     @category = Category.find_by(name: params["name"])
     puts params
     puts @category.inspect
