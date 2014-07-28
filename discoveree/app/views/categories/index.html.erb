@@ -3,6 +3,3 @@
 <% @user.categories.each do |category| %>
 	<div class="container"><%= link_to category.name, user_category_path(@user, category) %></div>
 <% end %>
-
-<canvas id="viewport" height="800" width="800"></canvas>
-

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def sign_up_page
-  	render :sign_up
+  	render :sign_up, :layout => false
   end
 
   def login

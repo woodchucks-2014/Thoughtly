@@ -6,7 +6,7 @@ $(function(){
 			url: "/users/signup",
 			data: $("form").serialize(),
 			success: function(data){
-				$("#welcome").html(data)
+				$("#welcome").html(data);
 			}
 		})
 	})
