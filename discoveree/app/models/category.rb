@@ -10,14 +10,6 @@ class Category < ActiveRecord::Base
     return keywords_array
   end
 
-  def self.format_related(categories)
-    if categories.class == Array && categories.length > 1
-      return categories.join("%")
-    else
-      return ""
-    end
-  end
-
   def generate_summary
     query = self.name.gsub(" ", "_").downcase
     p "*"*10

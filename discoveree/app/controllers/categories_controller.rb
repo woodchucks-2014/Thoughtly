@@ -6,16 +6,15 @@ class CategoriesController < ApplicationController
     check_sign_in
     unless validate_user_against(params[:user_id].to_i)
       redirect_to user_categories_path(@current_user)
-    end 
-    @categories = @current_user.categories 
+    end
+    @categories = @current_user.categories
   end
 
   def create
     @user = User.authenticate(params[:email], params[:password])
     if @user
       @category_array = Category.analyze_url(params[:url])
-      @related_categories = Category.format_related(@category_array)
-      @category = Category.new(name: @category_array[0], related_categories: @related_categories)
+      @category = Category.new(name: @category_array[0], related_categories: @category_array[1..-1])
       render :json => { message: "Creating a briefing on: " + @category.name + "..." }
     else
       render :json => { message: "Oops! Looks like you need to sign up first." }
@@ -29,16 +28,20 @@ class CategoriesController < ApplicationController
     if validate_user_against(params[:user_id].to_i)
       unless Category.exists?(params[:id].to_i)
         not_found
-      end   
+      end
       @summary = @category.generate_summary
-    else 
+    else
       redirect_to user_categories_path(@user)
     end
   end
 
   def nodegraph
     @category = Category.find_by(name: params["name"])
-    render :json => {main_category: @category.name, related_categories: @category.related_categories.split("%")}.to_json
+    puts params
+    puts @category.inspect
+    puts @category
+    puts @category.class
+    render :json => {main_category: @category.name, related_categories: @related_categories}
     # array = []
     # 999.times do
     #   array << (1..1000).to_a.sample.to_s
