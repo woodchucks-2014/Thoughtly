@@ -2,9 +2,9 @@ class Content < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   require 'open-uri'
-  # require 'wikipedia'
-  # require 'google/api_client'
-  # require 'trollop'
+  require 'wikipedia'
+  require 'google/api_client'
+  require 'trollop'
 
   def self.youtube_search(query)
     youtube_service_api_name = "youtube"
