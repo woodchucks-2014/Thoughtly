@@ -1,11 +1,18 @@
-<h2><%= @category.name %></h2>
+
+<h2 id="category_name"><%= @category.name %></h2>
 <div id="contents">
+<div id="summary">
+	<%= @summary %>
+</div>
+	
 	<ul><% @category.contents.each do |content| %>
 		<% unless content.url == nil %>
 			<li class="container"><%= link_to content.url, content.url %></li>
 		<% end %>
-	<% end %></ul>	
+	<% end %></ul>
+
+<canvas id="viewport" height="450" width="450"></canvas>
 </div>
-<div id="summary">
-	<%= @summary %>
-</div>
+
+
+
