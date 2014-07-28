@@ -2,7 +2,6 @@ $(function(){
 	$('#get_started').click(function(e){
 		e.preventDefault();
 		$.ajax({
-			type: "GET",
 			url: "/users/signup",
 			data: $("form").serialize(),
 			success: function(data){
