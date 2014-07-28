@@ -3,20 +3,18 @@ class CategoriesController < ApplicationController
 
   def index
     check_sign_in
-    @current_user = User.find_by_id(session[:user_id])
     @categories = @current_user.categories
-    unless @current_user.id == params[:user_id].to_i
-      redirect_to user_categories_path(@current_user)
-    end
+    validate_user_against(params[:user_id].to_i)
   end
 
   def create
     @user = User.authenticate(params[:email], params[:password])
     if @user
+      # @category_name = Category.analyze_url(params[:url])
+      # @category = Category.new(name: @category_name)
       @category_array = Category.analyze_url(params[:url])
       @related_categories = Category.format_related(@category_array)
       @category = Category.new(name: @category_array[0], related_categories: @related_categories)
-      puts @category.inspect
       render :json => { message: "Creating a briefing on: " + @category.name + "..." }
     else
       render :json => { message: "Oops! Looks like you need to sign up first." }
@@ -25,12 +23,9 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @current_user = User.find_by_id(session[:user_id])
-    @category = Category.find_by_id(params[:id])
+    check_sign_in
     @summary = @category.generate_summary
-    unless @current_user.id == params[:user_id].to_i
-      redirect_to user_categories_path(@current_user, @category)
-    end
+    validate_user_against(params[:user_id])
     unless Category.exists?(params[:id])
       render :file => "#{Rails.root}/public/404.html",  :status => 404
     end
@@ -38,7 +33,7 @@ class CategoriesController < ApplicationController
 
   def nodegraph
     @category = Category.find_by(name: params["name"])
-    render :json => {related_categories: @category.related_categories.split("%")}.to_json
+    render :json => {main_category: @category.name, related_categories: @category.related_categories.split("%")}.to_json
     # array = []
     # 999.times do
     #   array << (1..1000).to_a.sample.to_s
@@ -50,5 +45,6 @@ class CategoriesController < ApplicationController
 
   end
 
-end
-
+  def childnodes
+    render :json => {childnodes: ["red","blue","green","purple","shuff","fuschia","megenta"]}
+  end
