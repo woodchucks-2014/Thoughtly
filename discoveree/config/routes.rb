@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/users/:id/destroy', to: 'users#destroy', :as => "logout"
   post '/users', to: 'users#create', :as => 'sign_up'
   post '/categories/create' => 'categories#create'
+
   resources :users do
     resources :categories, :except => ['create']
   end

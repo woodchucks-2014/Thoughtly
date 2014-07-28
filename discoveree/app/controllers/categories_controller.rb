@@ -23,6 +23,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @category.find_by(4)
     check_sign_in
     @summary = @category.generate_summary
     validate_user_against(params[:user_id])

@@ -25,7 +25,7 @@ module UserHelper
 
   def validate_user_against params
     unless @current_user.id == params
-      redirect_to :root
+      redirect_to user_categories_path
     end
   end
 
