@@ -1,18 +1,8 @@
-<header>
-  <h2>mythoughtly</h2>
+<div class="container"><%= link_to "Content", user_categories_path(@current_user) %></div>
 
-</header>
-
-<nav id="nav">
-</nav>
-
-	<div class="container"><%= link_to "Content", user_categories_path(@current_user) %></div></a>
-
-	<% @user.categories.each do |category| %>
-		<div class="container"><%= link_to category.name, user_category_path(@user, category) %></div>
-	<% end %>
-
-</body>
+<% @user.categories.each do |category| %>
+	<div class="container"><%= link_to category.name, user_category_path(@user, category) %></div>
+<% end %>
 
 <canvas id="viewport" height="800" width="800"></canvas>
-<p>Graph</p>
+
