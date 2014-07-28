@@ -7,8 +7,8 @@ $(document).ready(function(){
 	sys.renderer = Renderer("#viewport");
 
 	function nodeCreate(node_array){
-	parentNode = sys.addNode(node_array[1],{'color':'blue', 'shape':'dot', 'label': node_array[1]});
-	 for(i=1;i<node_array.length;i++){
+	parentNode = sys.addNode(node_array[0],{'color':'blue', 'shape':'dot', 'label': node_array[1]});
+	 for(i=0;i<node_array.length;i++){
 		var childNode = sys.addNode(node_array[i],{'color':'blue', 'shape':'dot', 'label':node_array[i]});
 		sys.addEdge(parentNode,childNode);
 	 };
@@ -17,12 +17,12 @@ $(document).ready(function(){
 	 $.ajax({
 	 	url:"/categories/nodegraph",
 	 	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-	 	type: "post",
+	 	type: "POST",
 	 	dataType: 'json',
 	 	data: {"name":$("#category_name").text()},
 	 	success: function(data) {
 	 		node_array = data['related_categories'];
-	 		nodeCreate(node_array)
+	 		nodeCreate(node_array);
 	 	}
 	 });
 	// var red = sys.addNode('Red',{'color':'red', 'shape':'dot', 'label':'red'});

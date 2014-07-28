@@ -36,7 +36,9 @@ class CategoriesController < ApplicationController
   end
 
   def nodegraph
+    puts params["name"]
     @category = Category.find_by(name: params["name"])
+    puts @category.class
     render :json => {related_categories: @category.related_categories.split("%")}.to_json
     # array = []
     # 999.times do
