@@ -12,7 +12,6 @@ module UserHelper
     if !session[:user_id].nil?
       true
     else
-      # redirect_to :root
       false
     end
   end
@@ -21,12 +20,11 @@ module UserHelper
     if is_signed_in?
       @current_user ||= User.find_by_id(session[:user_id])
     end
-  end
+    nil 
+  end 
 
   def validate_user_against params
-    unless @current_user.id == params
-      redirect_to :root
-    end
+    return true if @current_user.id == params
   end
 
   def sanity_check param
