@@ -8,6 +8,7 @@
 <br>
 
 <div id="contents">
+	<h1 id="category_name"><%=@category.name%></h1>
 
 	<ul><% @category.contents.each do |content| %>
 		<% unless content.url == nil %>

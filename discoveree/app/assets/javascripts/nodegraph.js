@@ -24,7 +24,7 @@ $(document).ready(function(){
 	 $.ajax({
 	 	url:"/categories/nodegraph",
 	 	beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-	 	type: "post",
+	 	type: "POST",
 	 	dataType: 'json',
 	 	data: {"name":$("#category_name").text()},
 	 	success: function(data) {
