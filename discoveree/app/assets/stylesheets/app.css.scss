@@ -5,14 +5,14 @@ $dark-primary:   darken( $primary-color, 5% );
 $textcolor:      white;
 
 $darkblue:       #07121C;
-$lightblue:      #BBDAF9; 
+$lightblue:      #45a4ff; 
 $lightbluedark:  darken($lightblue, 30%);  
 /*darken($lightblue, 30%) replaces #273A4F*/
 $headerblue:     #273A4F;
 $headershadow:   #060E18;
 $link: #6CF22E;
 
-$visited:        white;
+$visited:        none;
 /*need to use jquery for font resizing*/
 
 html {
@@ -49,22 +49,27 @@ header {
   z-index: 5;
 }
 
-h1, h2 {
+h1 {
   font-family: $font-stack;
-  text-shadow: 0 0 0.2em $lightblue
+  text-shadow: 0 0 0.02em $lightblue
 }
 
-h1 {
+h2 {
   font-size: 2.5em;
+  font-family: $font-stack;
+  color: white;
 }
+
+h2 {
+  font-size: 1.5em;
+}
+
 
 h1:hover {
   font-size: 2.5em;
   text-shadow: 0 0 0.7em $lightblue
 }
-h2 {
-  font-size: 1.5em;
-}
+
 
 h3 {
   font-size: 1.25em;
@@ -95,8 +100,8 @@ a:visited {
 
 /*for contents*/
 .container {
-  border: 1px dotted;
-  border-left:none;
+  border: 1px solid;
+  border-left: none;
   border-right:none;
   margin: 1em;
   padding: 1em;
@@ -107,11 +112,18 @@ a:visited {
 }
 
 .container:hover {
-  opacity: 0.4;
-  background-color: $darkblue;
-  color: $textcolor;
-  font-weight: 600;
-  text-shadow: 0 0 0.2em $lightblue;
+  opacity: 0.8;
+  background-color: #0e1e2c;
+  font-weight: 100;
+  text-shadow: 0 0 0.02em $lightblue;
+}
+
+.contain:hover a {
+  color: white;
+}
+
+.container a {
+  color: #45a4ff
 }
 
 /*generic id for adding margin, can be redone*/
@@ -202,6 +214,10 @@ nav #title {
   color: #45a4ff;
   text-shadow: 0 0 0.05em $lightblue;
   font-size: 32px;
+}
+
+#category_name {
+
 }
 
 
