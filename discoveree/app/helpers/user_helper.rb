@@ -12,7 +12,7 @@ module UserHelper
     if !session[:user_id].nil?
       true
     else
-      redirect_to :root
+      # redirect_to :root
       false
     end
   end
