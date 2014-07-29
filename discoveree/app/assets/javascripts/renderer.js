@@ -131,12 +131,14 @@
             var pos = $(canvas).offset();
             _mouseP = arbor.Point(e.pageX-pos.left, e.pageY-pos.top)
             selected = nearest = dragged = particleSystem.nearest(_mouseP);
-
             if (dragged.node !== null) dragged.node.fixed = true
 
             $(canvas).bind('mousemove', handler.dragged)
             $(window).bind('mouseup', handler.dropped)
-
+            var current = nearest.node.name; //This handles the click event handler. When clicked, you can set different properties.
+            $.post('/categories/nodegraph',{data: current}, function(){
+              // console.log(current);
+            });
             return false
           },
           dragged:function(e){
@@ -149,6 +151,22 @@
               var p = particleSystem.fromScreen(s)
               dragged.node.p = p
             }
+
+            return false
+          },
+
+          down:function(e){
+            var pos = $(canvas).offset();
+            _mouseP = arbor.Point(e.pageX-pos.left, e.pageY-pos.top)
+            nearest = dragged = particleSystem.nearest(_mouseP);
+            move = false;
+
+            if (dragged && dragged.node !== null){
+            dragged.node.fixed = true
+            }
+
+            $(canvas).bind('mousemove', handler.dragged)
+            $(window).bind('mouseup', handler.dropped)
 
             return false
           },
