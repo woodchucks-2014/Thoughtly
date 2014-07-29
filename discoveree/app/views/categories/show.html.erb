@@ -13,9 +13,8 @@
 	</li>
 
 	<ul><% @category.contents.each do |content| %>
-			<% unless content.url == nil %>
-				<li class="container"><%= link_to content.url, content.url %></li>
-			<% end %>
+		<% unless content.url == nil || content.source == "wikipedia" %>
+			<li class="container"><%= link_to content.name, content.url %> (<%= content.source %>)</li>
 		<% end %>
 	</ul>
 

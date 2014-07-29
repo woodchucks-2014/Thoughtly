@@ -5,9 +5,11 @@ $dark-primary:   darken( $primary-color, 5% );
 $textcolor:      white;
 
 $darkblue:       #07121C;
+
 $lblue:          #45a4ff;
 $lightblue:      lighten($lblue, 20%);
 $lightbluedark:  darken($lightblue, 30%);  
+
 /*darken($lightblue, 30%) replaces #273A4F*/
 $headerblue:     #273A4F;
 $headershadow:   #060E18;
@@ -84,8 +86,8 @@ h3 {
   color: #44E357;
 }
 
-#get_started a:visited { 
-  text-decoration: none; 
+#get_started a:visited {
+  text-decoration: none;
   color: #44E357;
 }
 
@@ -94,8 +96,8 @@ a {
   color: #44E357;
 }
 
-a:visited { 
-  text-decoration: none; 
+a:visited {
+  text-decoration: none;
   color: $visited;
 }
 
@@ -113,6 +115,11 @@ a:visited {
   text-decoration:none;
   word-wrap: break-word;
   width: 100%;
+
+  #delete{
+    float:right;
+    font-size: xx-small;
+  }
 }
 
 .container:hover {
@@ -190,7 +197,7 @@ button {
   font-family: $font-stack;
 }
 
-button:hover {  
+button:hover {
   text-shadow: 0 0 0.01em white;
 }
 

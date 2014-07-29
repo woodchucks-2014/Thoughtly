@@ -5,6 +5,7 @@
  <h3>welcome, thinker</h3><br/>
     <%= f.text_field :email, placeholder: "You@domain.com" %><br><br/>
     <%= f.password_field :password, placeholder: "Password" %><br><br>
+    <%= f.password_field :password_confirmation, placeholder: "Confirm Password"  %><br><br>
 
       <button><%= f.submit "Sign Me Up!"%></button><br><br>
       <%= link_to "already signed up? sign in here", root_url, :class => "signin" %><br><br>
