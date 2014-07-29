@@ -141,7 +141,7 @@
 
                for(i=0;i<categories.length;i++){
                var child = particleSystem.addNode(categories[i],{
-                'color':'orange',
+                'color':'green',
                 'shape':'square',
                 'label': categories[i]
                });

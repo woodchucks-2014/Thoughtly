@@ -33,7 +33,7 @@ class CategoriesController < ApplicationController
       unless Category.exists?(params[:id].to_i)
         not_found
       end
-      @summary = @category.generate_summary
+      @summary = Category.generate_summary(@category.name)
     else
       redirect_to user_categories_path(@user)
     end
@@ -43,25 +43,15 @@ class CategoriesController < ApplicationController
     puts params["current"]
     @category = Category.find_by(name: params["name"])
     render :json => {main_category: @category.name, related_categories: @category.related_categories}
-    # array = []
-    # 999.times do
-    #   array << (1..1000).to_a.sample.to_s
-    # end
-    # render :json => {related_categories:
-    #   ["blue", "red", "green", "yellow", "pink", "purple", "blue", "fuschia", "shuff", "magenta", "green", "orange"]
-    #   }.to_json
-    # render :json => {related_categories: array}.to_json
-
   end
 
   def childnodes
-    child_node_array = Content.bing_keywords(params["data"])
+    child_node_array = Category.generate_summary(params["data"])
+    puts child_node_array
     print child_node_array
         render :json => {related_categories:
       child_node_array[1]
       }.to_json
-  #   puts params
-  #   # render :json => {childnodes: ["red","blue","green","purple","shuff","fuschia","megenta"]}
   end
 end
 
