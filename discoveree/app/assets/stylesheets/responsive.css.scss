@@ -1,12 +1,8 @@
 .flex-container {
   padding: 0;
-  margin: 0;
   list-style: none;
   flex-wrap: wrap;
   
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
   
@@ -16,18 +12,15 @@
 }
 
 .flex-item {
+  align-items: center;
 }
 
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
-
 @media screen and (max-width: 480px) {
   #summary,
   #contents,
-  #welcome { 
+  #welcome,
+  #viewport { 
     width: 100%;
-  }
-
-  #viewport {
-    width: device-width;
   }
 }

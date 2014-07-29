@@ -10,7 +10,7 @@ $lightbluedark:  darken($lightblue, 30%);
 /*darken($lightblue, 30%) replaces #273A4F*/
 $headerblue:     #273A4F;
 $headershadow:   #060E18;
-$link: #6CF22E;
+$link:           #6CF22E;
 
 $visited:        none;
 /*need to use jquery for font resizing*/
@@ -66,7 +66,7 @@ h2 {
 
 
 h1:hover {
-  font-size: 2.5em;
+  font-size: 1.5em;
   text-shadow: 0 0 0.7em $lightblue
 }
 
@@ -218,9 +218,7 @@ nav #title {
 }
 
 #category_name {
-
 }
-
 
 #user_email {
   background-color: $textcolor;

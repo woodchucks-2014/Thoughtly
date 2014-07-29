@@ -9,6 +9,7 @@ $(function(){
 			}
 		})
 	})
+	
 	$('body').on("click", '.event', function(e){
 		e.preventDefault();
 		$.ajax({
@@ -21,6 +22,17 @@ $(function(){
 		})
 	})
 
+	$('body').on("click", '.signin', function(e){
+		e.preventDefault();
+		$.ajax({
+			type: "GET",
+			url: "/users/login",
+			data: $("form").serialize(),
+			success: function(data){
+				$("#welcome").html(data)
+			}
+		})
+	})
 })
 
 // $(function(){

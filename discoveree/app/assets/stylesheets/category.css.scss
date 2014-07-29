@@ -1,12 +1,16 @@
-#contents {
+$lightblue:      #45a4ff; 
+$lightbluedark:  darken($lightblue, 30%);  
 
+#contents {
+  width: 100%;
 }
 
 #summary {
   margin-top: 1em;
   color: #45a4ff;
-  margin-left: 10%;
+  margin-left: 5%;
   margin-right: 5%;
+  margin-bottom: 2%;
   font-family: 'ubuntu';
   line-height: 145%;  
   background: #16314b;
@@ -17,8 +21,7 @@
 
 
 #viewport{
-
-	border: 1px solid black;
-
-	right: 5%;
+	border: 1px solid; 
+  color: $lightbluedark;
+  align: letf;
 }
