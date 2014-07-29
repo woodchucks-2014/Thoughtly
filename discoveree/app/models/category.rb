@@ -16,7 +16,7 @@ class Category < ActiveRecord::Base
     p ENV['FREEBASE']
     request = 'https://www.googleapis.com/freebase/v1/topic/en/' + query + '?filter=suggest' + '&key=' + ENV['FREEBASE']
     results = JSON.parse(RestClient.get(request, :format => :json))
-    summary = results["property"]["/common/topic/article"]["values"][0]["property"]["/common/document/text"]["values"][0]["value"]#[0..500] + ". . ."
+    summary = results["property"]["/common/topic/article"]["values"][0]["property"]["/common/document/text"]["values"][0]["value"]
   end
 
 end

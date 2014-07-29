@@ -16,6 +16,7 @@ class CategoriesController < ApplicationController
     p params
     p @user
     if @user
+      puts params[:url]
       @category_array = Category.analyze_url(params[:url])
       @category = Category.new(name: @category_array[0], related_categories: @category_array[1..-1])
       render :json => { message: "Creating a briefing on: " + @category.name + "..." }
@@ -33,7 +34,7 @@ class CategoriesController < ApplicationController
       unless Category.exists?(params[:id].to_i)
         not_found
       end
-      @summary = Category.generate_summary(@category.name)
+      @summary = Category.generate_summary(@category.name)[0..500] + ". . ."
     else
       redirect_to user_categories_path(@user)
     end
