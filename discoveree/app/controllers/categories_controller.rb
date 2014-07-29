@@ -55,8 +55,10 @@ class CategoriesController < ApplicationController
   end
 
   def childnodes
+    child_node_array = Content.bing_keywords(params["data"])
+    print child_node_array
         render :json => {related_categories:
-      ["blue", "red", "green", "yellow", "pink", "purple", "blue", "fuschia", "shuff", "magenta", "green", "orange"]
+      child_node_array[1]
       }.to_json
   #   puts params
   #   # render :json => {childnodes: ["red","blue","green","purple","shuff","fuschia","megenta"]}

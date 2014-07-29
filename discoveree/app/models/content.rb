@@ -77,6 +77,14 @@ class Content < ActiveRecord::Base
     ["http://en.wikipedia.org/wiki?curid=" + page.page["pageid"].to_s]
   end
 
+  def self.bing_keywords(query)
+    url ="http://api.bing.com/osjson.aspx?query="
+    query = query.split(" ").join("%20")
+    url = "http://api.bing.com/osjson.aspx?query=#{query}"
+    response = HTTParty.get(url)
+    return response.to_a
+  end
+
   def self.generate(category, user)
     query = category.name
     results = { "youtube" => Content.youtube_search(query),

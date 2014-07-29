@@ -59,7 +59,7 @@
             ctx.fillText(label||"", pt.x, pt.y+4)
             ctx.fillText(label||"", pt.x, pt.y+4)
           }
-        })    			
+        })
 
 
         // draw the edges
@@ -141,7 +141,7 @@
 
                for(i=0;i<categories.length;i++){
                var child = particleSystem.addNode(categories[i],{
-                'color':'blue',
+                'color':'orange',
                 'shape':'square',
                 'label': categories[i]
                });
