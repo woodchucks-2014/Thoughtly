@@ -54,7 +54,7 @@ class Content < ActiveRecord::Base
     response = HTTParty.get(url)
     articles = []
     response["response"]["docs"].each do |article|
-      articles << {:url => article["web_url"], :name => article["headline"]["seo"]}
+      articles << {:url => article["web_url"], :name => article["headline"]["main"]}
     end
     return articles[0..2]
   end
