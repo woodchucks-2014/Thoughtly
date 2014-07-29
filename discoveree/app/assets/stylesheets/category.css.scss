@@ -1,26 +1,27 @@
+$lightblue:      #45a4ff; 
+$lightbluedark:  darken($lightblue, 30%);  
+
 #contents {
-  width: 45%;
+  width: 100%;
 }
 
 #summary {
   margin-top: 1em;
-  width: 45%;
-  position: absolute;
-  right: 5%;
-  top: 10%;
   color: #45a4ff;
+  margin-left: 1%;
+  border: 10px;
+  margin-bottom: 2%;
   font-family: 'ubuntu';
   line-height: 145%;  
   background: #16314b;
-  padding: 15px;
+  padding: 0.75em;
+  color: white;
   border-radius: 5px;
-  box-shadow: 1px 1px 1px #2C2E33;
+    -webkit-box-shadow: 0 8px 6px -6px black;
+  /*box-shadow: 1px 1px 1px #2C2E33;*/
 }
 
-
-#viewport{
-	position: relative;
-	border: 1px solid black;
-	position: absolute;
-	right: 5%;
+canvas#viewport {
+	border: 1px solid; 
+  color: $lightbluedark;
 }
