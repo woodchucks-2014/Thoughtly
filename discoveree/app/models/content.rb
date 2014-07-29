@@ -28,10 +28,9 @@ class Content < ActiveRecord::Base
     search_response.data.items.each do |search_result|
       case search_result.id.kind
       when 'youtube#video'
-        videos.push("http://www.youtube.com/watch?v=#{search_result.id.videoId})")
+        videos.push({:url => "http://www.youtube.com/watch?v=#{search_result.id.videoId})", name: "#{search_result.snippet.title}"})
       end
     end
-    
     return videos[0..2]
   end
 
@@ -78,6 +77,8 @@ class Content < ActiveRecord::Base
   end
 
   def self.generate(category, user)
+    p "*"*100
+    p "AT THE BEGINNING OF THE GENERATE METHOD"*50
     query = category.name
     results = { "youtube" => Content.youtube_search(query),
     "coursera" => Content.coursera(query),
@@ -88,7 +89,12 @@ class Content < ActiveRecord::Base
     results.each_pair do |source, contents|
       unless contents == nil
         contents.each do |content|
-          user.categories.last.contents << Content.create(url: content, source: source)
+          if source == "youtube"
+            p content
+            user.categories.last.contents << Content.create(url: content[:url], source: source, name: content[:name])
+          else 
+            user.categories.last.contents << Content.create(url: content, source: source)
+          end
         end
       end
     end

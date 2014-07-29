@@ -12,7 +12,11 @@
 
 	<ul><% @category.contents.each do |content| %>
 		<% unless content.url == nil %>
-			<li class="container"><%= link_to content.url, content.url %></li>
+			<% if content.source == "youtube" %>
+				<li class="container"><%= link_to content.name, content.url %> (YouTube)</li>
+			<% else %>
+				<li class="container"><%= link_to content.url, content.url %></li>
+			<% end %>
 		<% end %>
 	<% end %></ul>
 

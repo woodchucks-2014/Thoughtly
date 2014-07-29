@@ -48,7 +48,6 @@ class CategoriesController < ApplicationController
     #   ["blue", "red", "green", "yellow", "pink", "purple", "blue", "fuschia", "shuff", "magenta", "green", "orange"]
     #   }.to_json
     # render :json => {related_categories: array}.to_json
-
   end
 
   def childnodes
