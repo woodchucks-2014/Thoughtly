@@ -5,7 +5,8 @@ $dark-primary:   darken( $primary-color, 5% );
 $textcolor:      white;
 
 $darkblue:       #07121C;
-$lightblue:      #45a4ff; 
+$lblue:          #45a4ff;
+$lightblue:      lighten($lblue, 20%);
 $lightbluedark:  darken($lightblue, 30%);  
 /*darken($lightblue, 30%) replaces #273A4F*/
 $headerblue:     #273A4F;
@@ -51,7 +52,7 @@ header {
 
 h1 {
   font-family: $font-stack;
-  text-shadow: 0 0 0.02em $lightblue
+  text-shadow: 0 0 0.01em $lightblue
 }
 
 h2 {
@@ -103,12 +104,14 @@ a:visited {
   border: 1px solid;
   border-left: none;
   border-right:none;
+  margin-right:2%;
   margin: 1em;
   padding: 1em;
   overflow: auto;
   font-family: $font-stack;
   color: $lightbluedark;
   text-decoration:none;
+  word-wrap: break-word;
   width: 100%;
 }
 

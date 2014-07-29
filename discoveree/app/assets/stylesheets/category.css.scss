@@ -9,19 +9,16 @@ $lightbluedark:  darken($lightblue, 30%);
   margin-top: 1em;
   color: #45a4ff;
   margin-left: 5%;
-  margin-right: 5%;
   margin-bottom: 2%;
   font-family: 'ubuntu';
   line-height: 145%;  
   background: #16314b;
-  padding: 15px;
+  padding: 0.5em;
   border-radius: 5px;
   box-shadow: 1px 1px 1px #2C2E33;
 }
 
-
-#viewport{
+canvas#viewport {
 	border: 1px solid; 
   color: $lightbluedark;
-  align: letf;
 }

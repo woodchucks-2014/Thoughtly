@@ -1,5 +1,7 @@
+
 .flex-container {
-  padding: 0;
+  padding-right: 5%;
+  padding-top: 2%;
   list-style: none;
   flex-wrap: wrap;
   
@@ -7,20 +9,26 @@
   display: flex;
   
   -webkit-flex-flow: row wrap;
-  justify-content: space-around;
   align-content: stretch;
+  justify-content: space-around;
 }
 
 .flex-item {
   align-items: center;
+  padding-right: 5%;
+  padding-left: 5%;
 }
 
+
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
-@media screen and (max-width: 480px) {
+@media only screen and (max-width: 480px) {
   #summary,
   #contents,
   #welcome,
   #viewport { 
     width: 100%;
+    padding: none;
   }
 }
+
+
