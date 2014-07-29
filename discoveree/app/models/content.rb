@@ -52,12 +52,11 @@ class Content < ActiveRecord::Base
     url = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=#{subject}&page=2&api-key=#{ENV['NY_TIMES_API_KEY']}"
     url =  URI.encode(url)
     response = HTTParty.get(url)
-    article_urls = []
-
+    articles = []
     response["response"]["docs"].each do |article|
-    article_urls << article["web_url"]
+      articles << {:url => article["web_url"], :name => article["headline"]["seo"]}
     end
-    return article_urls[0..2]
+    return articles[0..2]
   end
 
   def self.ted_search(query)
@@ -77,8 +76,6 @@ class Content < ActiveRecord::Base
   end
 
   def self.generate(category, user)
-    p "*"*100
-    p "AT THE BEGINNING OF THE GENERATE METHOD"*50
     query = category.name
     results = { "youtube" => Content.youtube_search(query),
     "coursera" => Content.coursera(query),
@@ -89,8 +86,7 @@ class Content < ActiveRecord::Base
     results.each_pair do |source, contents|
       unless contents == nil
         contents.each do |content|
-          if source == "youtube"
-            p content
+          if source == "youtube" || source == "nytimes"
             user.categories.last.contents << Content.create(url: content[:url], source: source, name: content[:name])
           else 
             user.categories.last.contents << Content.create(url: content, source: source)
