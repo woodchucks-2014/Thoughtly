@@ -5,12 +5,15 @@ $dark-primary:   darken( $primary-color, 5% );
 $textcolor:      white;
 
 $darkblue:       #07121C;
-$lightblue:      #45a4ff;
-$lightbluedark:  darken($lightblue, 30%);
+
+$lblue:          #45a4ff;
+$lightblue:      lighten($lblue, 20%);
+$lightbluedark:  darken($lightblue, 30%);  
+
 /*darken($lightblue, 30%) replaces #273A4F*/
 $headerblue:     #273A4F;
 $headershadow:   #060E18;
-$link: #6CF22E;
+$link:           #6CF22E;
 
 $visited:        none;
 /*need to use jquery for font resizing*/
@@ -51,7 +54,7 @@ header {
 
 h1 {
   font-family: $font-stack;
-  text-shadow: 0 0 0.02em $lightblue
+  text-shadow: 0 0 0.01em $lightblue
 }
 
 h2 {
@@ -66,10 +69,9 @@ h2 {
 
 
 h1:hover {
-  font-size: 2.5em;
+  font-size: 1.5em;
   text-shadow: 0 0 0.7em $lightblue
 }
-
 
 h3 {
   font-size: 1.25em;
@@ -103,12 +105,16 @@ a:visited {
   border: 1px solid;
   border-left: none;
   border-right:none;
+  margin-right:2%;
   margin: 1em;
   padding: 1em;
   overflow: auto;
   font-family: $font-stack;
   color: $lightbluedark;
   text-decoration:none;
+  word-wrap: break-word;
+  width: 100%;
+
   #delete{
     float:right;
     font-size: xx-small;
@@ -221,9 +227,7 @@ nav #title {
 }
 
 #category_name {
-
 }
-
 
 #user_email {
   background-color: $textcolor;

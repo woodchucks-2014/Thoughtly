@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def sign_in_page
-  	render :sign_in
+  	render :sign_in, :layout => false
   end
 
   def sign_up_page
