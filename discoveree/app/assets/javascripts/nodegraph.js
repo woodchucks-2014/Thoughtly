@@ -8,18 +8,18 @@ $(document).ready(function() {
         })
         sys.renderer = Renderer("#viewport");
 
-        function nodeCreate(node_array) {
-            parentNode = sys.addNode(node_array[0], {
+        function nodeCreate(parentNode, childNodes) {
+            parentNode = sys.addNode(parentNode, {
                 'color': 'blue',
                 'shape': 'dot',
-                'label': node_array[0]
+                'label': parentNode
             });
-            console.log(node_array);
-            for (i = 1; i < node_array.length; i++) {
-                var childNode = sys.addNode(node_array[i], {
+            console.log(childNodes);
+            for (i = 0; i < childNodes.length; i++) {
+                var childNode = sys.addNode(childNodes[i], {
                     'color': 'blue',
                     'shape': 'dot',
-                    'label': node_array[i]
+                    'label': childNodes[i]
                 });
                 console.log(childNode)
                 sys.addEdge(parentNode, childNode);

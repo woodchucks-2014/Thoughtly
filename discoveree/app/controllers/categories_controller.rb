@@ -12,6 +12,9 @@ class CategoriesController < ApplicationController
 
   def create
     @user = User.authenticate(params[:extension_email], params[:extension_password])
+    p "*"*10
+    p params
+    p @user
     if @user
       @category_array = Category.analyze_url(params[:url])
       @category = Category.new(name: @category_array[0], related_categories: @category_array[1..-1])
@@ -37,13 +40,8 @@ class CategoriesController < ApplicationController
   end
 
   def nodegraph
-    puts params["name"]
     @category = Category.find_by(name: params["name"])
-    puts params
-    puts @category.inspect
-    puts @category
-    puts @category.class
-    render :json => {main_category: @category.name, related_categories: @related_categories}
+    render :json => {main_category: @category.name, related_categories: @category.related_categories}
     # array = []
     # 999.times do
     #   array << (1..1000).to_a.sample.to_s
