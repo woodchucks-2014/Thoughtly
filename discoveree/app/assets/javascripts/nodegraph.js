@@ -10,14 +10,14 @@ $(document).ready(function() {
         function nodeCreate(parentNode, childNodes) {
             parentNode = sys.addNode(parentNode, {
                 'color': 'blue',
-                'shape': 'dot',
+                'shape': 'square',
                 'label': parentNode
             });
 
             for (i = 0; i < childNodes.length; i++) {
                 var childNode = sys.addNode(childNodes[i], {
                     'color': 'blue',
-                    'shape': 'dot',
+                    'shape': 'square',
                     'label': childNodes[i]
                 });
                 sys.addEdge(parentNode, childNode);

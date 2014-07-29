@@ -51,7 +51,7 @@ class CategoriesController < ApplicationController
     puts child_node_array
     print child_node_array
         render :json => {related_categories:
-      child_node_array[1]
+      child_node_array
       }.to_json
   end
 end

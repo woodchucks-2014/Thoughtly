@@ -138,7 +138,7 @@
             var parent = nearest.node.name; //This handles the click event handler. When clicked, you can set different properties.
             $.post('/categories/childnodes',{data: parent}, function(data){
                categories = data["related_categories"];
-
+               console.log(data)
                for(i=0;i<categories.length;i++){
                var child = particleSystem.addNode(categories[i],{
                 'color':'green',
