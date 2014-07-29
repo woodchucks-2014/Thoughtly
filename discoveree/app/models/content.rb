@@ -75,17 +75,6 @@ class Content < ActiveRecord::Base
     return results
   end
 
-  def self.scrape_description(url, source)
-    request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['alchemy_key'] +'&url=' + url + '&outputMode=json&cquery=P'
-    results = JSON.parse(RestClient.get request, :content_type => :json, :accept => :json)
-    case 
-    when url =~ /ted/
-      return results["queryResults"][0]["resultText"]
-    else
-      return "nada"
-    end  
-  end
-
   def self.wikipedia_search(query)
     page = Wikipedia.find(query)
     ["http://en.wikipedia.org/wiki?curid=" + page.page["pageid"].to_s]
@@ -94,11 +83,28 @@ class Content < ActiveRecord::Base
   def self.financial_times_search(query)
     url =  URI.encode('http://api.pearson.com/v2/ft/articles?search=' + query + '&apikey=' + ENV['FINANCIAL_TIMES'])
     response = HTTParty.get(url)
+    articles = []
     results = []
-    response["results"].each do |result|
-      results << {:url => result['article_url'], :name=> result['headline']}
+    response["results"].each do |article|
+      articles << {:url => article['article_url'], :name=> article['headline'], :description=> "The latest UK and international business, finance, economic and political news, comment and analysis from the Financial Times on FT.com."}
     end
-    return results[0..1]
+    return articles[0..1]
+  end
+
+  def self.scrape_description(url, source)
+    case 
+    when url =~ /ted/
+      request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['alchemy_key'] +'&url=' + url + '&outputMode=json&cquery=P'
+      results = JSON.parse(RestClient.get request, :content_type => :json, :accept => :json)
+      return results["queryResults"][0]["resultText"]
+    when url =~ /coursera/
+      request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['alchemy_key'] +'&url=' + url + '&outputMode=json&cquery=DIV'
+      results = JSON.parse(RestClient.get request, :content_type => :json, :accept => :json)
+      return results["queryResults"][0]["resultText"] unless results["queryResults"]
+      return "Coursera is an education platform that partners with top universities and organizations worldwide, to offer courses online for anyone to take, for free."
+    else
+      return "nada"
+    end  
   end
 
   def self.generate(category, user)
