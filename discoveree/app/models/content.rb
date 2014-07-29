@@ -28,7 +28,7 @@ class Content < ActiveRecord::Base
     search_response.data.items.each do |search_result|
       case search_result.id.kind
       when 'youtube#video'
-        videos.push({:url => "http://www.youtube.com/watch?v=#{search_result.id.videoId})", name: "#{search_result.snippet.title}"})
+        videos << {:url => "http://www.youtube.com/watch?v=#{search_result.id.videoId})", name: "#{search_result.snippet.title}"}
       end
     end
     return videos[0..2]
@@ -41,7 +41,7 @@ class Content < ActiveRecord::Base
     videos = []
     unless response["elements"] == nil
       response["elements"].each do |entry|
-        videos.push({:url => "https://www.coursera.org/course/#{entry['shortName']}", :name => entry['name']})
+        videos << {:url => "https://www.coursera.org/course/#{entry['shortName']}", :name => entry['name']} 
       end
     end
     return [videos[0]]
@@ -65,7 +65,7 @@ class Content < ActiveRecord::Base
     response = HTTParty.get(url)
     videos = []
     response["results"].each do |result|
-      videos << "http://www.ted.com/talks/#{result["talk"]["slug"]}"
+      videos << {:url => "http://www.ted.com/talks/#{result["talk"]["slug"]}", :name=> result["talk"]["name"]} 
     end
     return videos[0..1]
   end
@@ -86,7 +86,7 @@ class Content < ActiveRecord::Base
     results.each_pair do |source, contents|
       unless contents == nil
         contents.each do |content|
-          if source == "youtube" || source == "nytimes" || source == "coursera"
+          if source == "youtube" || source == "nytimes" || source == "coursera" || source == "ted"
             user.categories.last.contents << Content.create(url: content[:url], source: source, name: content[:name])
           else 
             user.categories.last.contents << Content.create(url: content, source: source)
@@ -95,5 +95,6 @@ class Content < ActiveRecord::Base
       end
     end
   end
+
 
 end
