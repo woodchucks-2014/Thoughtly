@@ -75,18 +75,29 @@ class Content < ActiveRecord::Base
     ["http://en.wikipedia.org/wiki?curid=" + page.page["pageid"].to_s]
   end
 
+  def self.financial_times_search(query)
+    url =  URI.encode('http://api.pearson.com/v2/ft/articles?search=' + query + '&apikey=' + ENV['FINANCIAL_TIMES'])
+    response = HTTParty.get(url)
+    results = []
+    response["results"].each do |result|
+      results << {:url => result['article_url'], :name=> result['headline']}
+    end
+    return results[0..1]
+  end
+
   def self.generate(category, user)
     query = category.name
     results = { "youtube" => Content.youtube_search(query),
     "coursera" => Content.coursera(query),
     "nytimes" => Content.new_york_times(query),
     "ted" => Content.ted_search(query),
+    "financial times" => Content.financial_times_search(query),
     "wikipedia" => Content.wikipedia_search(query) }
     user.categories << category
     results.each_pair do |source, contents|
       unless contents == nil
         contents.each do |content|
-          if source == "youtube" || source == "nytimes" || source == "coursera" || source == "ted"
+          if source == "youtube" || source == "nytimes" || source == "coursera" || source == "ted" || source == "financial times"
             user.categories.last.contents << Content.create(url: content[:url], source: source, name: content[:name])
           else 
             user.categories.last.contents << Content.create(url: content, source: source)
