@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.1'
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
@@ -59,13 +59,16 @@ gem 'devise'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 group :test do
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
   gem 'selenium-webdriver', '~> 2.35.1'
   gem 'database_cleaner'
   gem 'simplecov', :require => false
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
 end
 # Use unicorn as the app server
 # gem 'unicorn'
