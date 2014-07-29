@@ -11,19 +11,8 @@
 	<h1 id="category_name"><%=@category.name%></h1>
 
 	<ul><% @category.contents.each do |content| %>
-		<% unless content.url == nil %>
-			<% case %>
-				<% when content.source == "youtube" %> 
-					<li class="container"><%= link_to content.name, content.url %> (YouTube)</li>
-				<% when content.source == "nytimes" %>
-					<li class="container"><%= link_to content.name, content.url %> (NYTimes)</li>
-				<% when content.source == "coursera" %>
-					<li class="container"><%= link_to content.name, content.url %> (Coursera)</li>
-				<% when content.source == "ted" %>
-					<li class="container"><%= link_to content.name, content.url %> (TED)</li>
-			<% else %>
-				<li class="container"><%= link_to content.url, content.url %></li>
-			<% end %>
+		<% unless content.url == nil || content.source == "wikipedia" %>
+			<li class="container"><%= link_to content.name, content.url %> (<%= content.source %>)</li>
 		<% end %>
 	<% end %></ul>
 
