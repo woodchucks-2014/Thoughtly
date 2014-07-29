@@ -5,7 +5,7 @@ class Category < ActiveRecord::Base
   include ActionView::Helpers
 
   def self.analyze_url(url)
-    request = 'http://access.alchemyapi.com/calls/url/URLGetRankedNamedEntities?apikey=' + ENV['alchemy_key'] + '&url=' + url + '&outputMode=json'
+    request = 'http://access.alchemyapi.com/calls/url/URLGetRankedConcepts?apikey=' + ENV['alchemy_key'] + '&url=' + url + '&outputMode=json'
     keywords = JSON.parse(RestClient.get request, :content_type => :json, :accept => :json)
     keywords_array = keywords["concepts"].map {|concept| concept["text"]}
     return keywords_array
