@@ -6,13 +6,13 @@ class CategoriesController < ApplicationController
     check_sign_in
     unless validate_user_against(params[:user_id].to_i)
       redirect_to user_categories_path(@current_user)
-    end 
-    @categories = @current_user.categories 
+    end
+    @categories = @current_user.categories
   end
 
   def create
-    @user = User.authenticate(params[:extension_email], params[:extension_password])
-    if @user
+    @user = User.find_by_email(params[:extension_email])
+    if @user && @user.authenticate(params[:extension_password])
       @category_array = Category.analyze_url(params[:url])
       @related_categories = Category.format_related(@category_array)
       @category = Category.new(name: @category_array[0], related_categories: @related_categories)
@@ -29,9 +29,9 @@ class CategoriesController < ApplicationController
     if validate_user_against(params[:user_id].to_i)
       unless Category.exists?(params[:id].to_i)
         not_found
-      end   
+      end
       @summary = @category.generate_summary
-    else 
+    else
       redirect_to user_categories_path(@user)
     end
   end
