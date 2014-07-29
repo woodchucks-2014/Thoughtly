@@ -2,6 +2,7 @@ class Category < ActiveRecord::Base
   belongs_to :user
   has_many :categories, through: :contents
   has_many :contents
+  include ActionView::Helpers
 
   def self.analyze_url(url)
     request = 'http://access.alchemyapi.com/calls/url/URLGetRankedConcepts?apikey=' + ENV['alchemy_key'] + '&url=' + url + '&outputMode=json'
@@ -20,8 +21,6 @@ class Category < ActiveRecord::Base
 
   def generate_summary
     query = self.name.gsub(" ", "_").downcase
-    p "*"*10
-    p ENV['FREEBASE']
     request = 'https://www.googleapis.com/freebase/v1/topic/en/' + query + '?filter=suggest' + '&key=' + ENV['FREEBASE']
     results = JSON.parse(RestClient.get(request, :format => :json))
     summary = results["property"]["/common/topic/article"]["values"][0]["property"]["/common/document/text"]["values"][0]["value"][0..500] + ". . ."

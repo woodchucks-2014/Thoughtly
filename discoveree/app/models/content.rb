@@ -28,10 +28,9 @@ class Content < ActiveRecord::Base
     search_response.data.items.each do |search_result|
       case search_result.id.kind
       when 'youtube#video'
-        videos.push("http://www.youtube.com/watch?v=#{search_result.id.videoId})")
+        videos << {:url => "http://www.youtube.com/watch?v=#{search_result.id.videoId})", name: "#{search_result.snippet.title}"}
       end
     end
-    
     return videos[0..2]
   end
 
@@ -42,10 +41,10 @@ class Content < ActiveRecord::Base
     videos = []
     unless response["elements"] == nil
       response["elements"].each do |entry|
-        videos << "https://www.coursera.org/course/#{entry['shortName']}"
+        videos << {:url => "https://www.coursera.org/course/#{entry['shortName']}", :name => entry['name']} 
       end
     end
-    videos[0..2]
+    return [videos[0]]
   end
 
   def self.new_york_times(query)
@@ -53,12 +52,11 @@ class Content < ActiveRecord::Base
     url = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=#{subject}&page=2&api-key=#{ENV['NY_TIMES_API_KEY']}"
     url =  URI.encode(url)
     response = HTTParty.get(url)
-    article_urls = []
-
+    articles = []
     response["response"]["docs"].each do |article|
-    article_urls << article["web_url"]
+      articles << {:url => article["web_url"], :name => article["headline"]["main"]}
     end
-    return article_urls[0..2]
+    return articles[0..2]
   end
 
   def self.ted_search(query)
@@ -67,9 +65,9 @@ class Content < ActiveRecord::Base
     response = HTTParty.get(url)
     videos = []
     response["results"].each do |result|
-      videos << "http://www.ted.com/talks/#{result["talk"]["slug"]}"
+      videos << {:url => "http://www.ted.com/talks/#{result["talk"]["slug"]}", :name=> result["talk"]["name"]} 
     end
-    return videos[0..2]
+    return videos[0..1]
   end
 
   def self.wikipedia_search(query)
@@ -88,10 +86,15 @@ class Content < ActiveRecord::Base
     results.each_pair do |source, contents|
       unless contents == nil
         contents.each do |content|
-          user.categories.last.contents << Content.create(url: content, source: source)
+          if source == "youtube" || source == "nytimes" || source == "coursera" || source == "ted"
+            user.categories.last.contents << Content.create(url: content[:url], source: source, name: content[:name])
+          else 
+            user.categories.last.contents << Content.create(url: content, source: source)
+          end
         end
       end
     end
   end
+
 
 end
