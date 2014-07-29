@@ -1,3 +1,4 @@
+<!-- <div id="welcome"> -->
 <%= flash[:notice] %>
     <%= form_for :user,  url: {action: "create"} do |f| %>
 
@@ -9,4 +10,6 @@
     <button><%= f.submit "Sign Me Up!"%></button><br><br>
     <%= link_to "already signed up? sign in here", users_login_path, :class => "signin" %><br><br>
 <% end %>
+
+<!-- </div> -->
 
