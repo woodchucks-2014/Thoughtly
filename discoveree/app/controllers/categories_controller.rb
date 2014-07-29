@@ -6,13 +6,13 @@ class CategoriesController < ApplicationController
     check_sign_in
     unless validate_user_against(params[:user_id].to_i)
       redirect_to user_categories_path(@current_user)
-    end 
-    @categories = @current_user.categories 
+    end
+    @categories = @current_user.categories
   end
 
   def create
-    @user = User.authenticate(params[:extension_email], params[:extension_password])
-    if @user
+    @user = User.find_by_email(params[:extension_email])
+    if @user && @user.authenticate(params[:extension_password])
       @category_array = Category.analyze_url(params[:url])
       @related_categories = Category.format_related(@category_array)
       @category = Category.new(name: @category_array[0], related_categories: @related_categories)
@@ -29,9 +29,9 @@ class CategoriesController < ApplicationController
     if validate_user_against(params[:user_id].to_i)
       unless Category.exists?(params[:id].to_i)
         not_found
-      end   
+      end
       @summary = @category.generate_summary
-    else 
+    else
       redirect_to user_categories_path(@user)
     end
   end
@@ -40,18 +40,17 @@ class CategoriesController < ApplicationController
     puts params["name"]
     @category = Category.find_by(name: params["name"])
     render :json => {main_category: @category.name, related_categories: @category.related_categories.split("%")}.to_json
-    # array = []
-    # 999.times do
-    #   array << (1..1000).to_a.sample.to_s
-    # end
-    # render :json => {related_categories:
-    #   ["blue", "red", "green", "yellow", "pink", "purple", "blue", "fuschia", "shuff", "magenta", "green", "orange"]
-    #   }.to_json
-    # render :json => {related_categories: array}.to_json
-
   end
 
   def childnodes
     render :json => {childnodes: ["red","blue","green","purple","shuff","fuschia","megenta"]}
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+
+    redirect_to user_categories_path
+    # redirect_to :root
   end
 end
