@@ -16,6 +16,7 @@
 		<% unless content.url == nil || content.source == "wikipedia" %>
 			<li class="container"><%= link_to content.name, content.url %> (<%= content.source %>)</li>
 		<% end %>
+		<% end %>
 	</ul>
 
 
