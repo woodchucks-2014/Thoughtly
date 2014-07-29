@@ -1,8 +1,10 @@
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
 
-@media only screen and (max-width: 480px) {
-  .col { 
-    margin: 1% 0 1% 0%;
+@media screen and (max-width: 480px) {
+  .summary,
+  .contents,
+  .viewport { 
+    /*margin: 1% 0 1% 0%;*/
     width: 100%;
   }
 }
