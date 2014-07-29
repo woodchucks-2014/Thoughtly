@@ -1,23 +1,28 @@
+<ul class="flex-container">
 
-<div id="summary">
-	<%= @summary %>
-	<div id="wikipedia_attribution"><%= link_to '(Wikipedia)', "#{lookup_wikipedia(@category)}" %></div>
-</div>
+  <li class="flex-item">
+  	<h2 id="category_name"><%=@category.name%></h2></li>
 
-<br>
+  <li class="flex-item">
+  	<h1 id="summary">
+  		<%= @summary %><br><br>
 
-<div id="contents">
-	<h1 id="category_name"><%=@category.name%></h1>
+			<div id="wikipedia_attribution"><%= link_to '(Wikipedia)', "#{lookup_wikipedia(@category)}" %>
+		</h1><br></div>
+
+	</li>
 
 	<ul><% @category.contents.each do |content| %>
 		<% unless content.url == nil || content.source == "wikipedia" %>
 			<li class="container"><%= link_to content.name, content.url %> (<%= content.source %>)</li>
 		<% end %>
-	<% end %></ul>
-
-	<canvas id="viewport" height="450" width="450"></canvas>
-
-</div>
+		<% end %>
+	</ul>
 
 
+	 <li class="flex-item">
+	 	<canvas class="container" id="viewport" width="600" height="600">
+	 	</canvas>
+	 </li>
+</ul>
 
