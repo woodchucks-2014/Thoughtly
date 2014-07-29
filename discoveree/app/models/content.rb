@@ -67,7 +67,23 @@ class Content < ActiveRecord::Base
     response["results"].each do |result|
       videos << {:url => "http://www.ted.com/talks/#{result["talk"]["slug"]}", :name=> result["talk"]["name"]} 
     end
-    return videos[0..1]
+    results = []
+    videos[0..1].each do |video|
+      video[:description] = Content.scrape_description(video[:url], "ted")
+      results << video
+    end 
+    return results
+  end
+
+  def self.scrape_description(url, source)
+    request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['alchemy_key'] +'&url=' + url + '&outputMode=json&cquery=P'
+    results = JSON.parse(RestClient.get request, :content_type => :json, :accept => :json)
+    case 
+    when url =~ /ted/
+      return results["queryResults"][0]["resultText"]
+    else
+      return "nada"
+    end  
   end
 
   def self.wikipedia_search(query)
@@ -97,7 +113,7 @@ class Content < ActiveRecord::Base
     results.each_pair do |source, contents|
       unless contents == nil
         contents.each do |content|
-          if source == "youtube" 
+          if source == "ted" 
             user.categories.last.contents << Content.create(url: content[:url], source: source, name: content[:name], description: content[:description])
           elsif source == "wikipedia" 
             user.categories.last.contents << Content.create(url: content, source: source)
