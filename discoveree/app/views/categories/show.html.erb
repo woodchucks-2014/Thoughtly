@@ -17,6 +17,8 @@
 					<li class="container"><%= link_to content.name, content.url %> (YouTube)</li>
 				<% when content.source == "nytimes" %>
 					<li class="container"><%= link_to content.name, content.url %> (NYTimes)</li>
+				<% when content.source == "coursera" %>
+					<li class="container"><%= link_to content.name, content.url %> (Coursera)</li>
 			<% else %>
 				<li class="container"><%= link_to content.url, content.url %></li>
 			<% end %>

@@ -41,10 +41,10 @@ class Content < ActiveRecord::Base
     videos = []
     unless response["elements"] == nil
       response["elements"].each do |entry|
-        videos << "https://www.coursera.org/course/#{entry['shortName']}"
+        videos.push({:url => "https://www.coursera.org/course/#{entry['shortName']}", :name => entry['name']})
       end
     end
-    videos[0..2]
+    return [videos[0]]
   end
 
   def self.new_york_times(query)
@@ -67,7 +67,7 @@ class Content < ActiveRecord::Base
     response["results"].each do |result|
       videos << "http://www.ted.com/talks/#{result["talk"]["slug"]}"
     end
-    return videos[0..2]
+    return videos[0..1]
   end
 
   def self.wikipedia_search(query)
@@ -86,7 +86,7 @@ class Content < ActiveRecord::Base
     results.each_pair do |source, contents|
       unless contents == nil
         contents.each do |content|
-          if source == "youtube" || source == "nytimes"
+          if source == "youtube" || source == "nytimes" || source == "coursera"
             user.categories.last.contents << Content.create(url: content[:url], source: source, name: content[:name])
           else 
             user.categories.last.contents << Content.create(url: content, source: source)
