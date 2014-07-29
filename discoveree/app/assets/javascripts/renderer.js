@@ -7,10 +7,9 @@
     var particleSystem = null
 
     var that = {
-      self: this,
       init:function(system){
         particleSystem = system
-        particleSystem.screenSize(canvas.width, canvas.height)
+        particleSystem.screenSize(canvas.width, canvas.height) 
         particleSystem.screenPadding(40)
 
         that.initMouseHandling()
@@ -27,7 +26,7 @@
           // node: {mass:#, p:{x,y}, name:"", data:{}}
           // pt:   {x:#, y:#}  node position in screen coords
 
-          // determine the box size and round off the coords if we'll be
+          // determine the box size and round off the coords if we'll be 
           // drawing a text label (awful alignment jitter otherwise...)
           var label = node.data.label||""
           var w = ctx.measureText(""+label).width + 10
@@ -60,7 +59,7 @@
             ctx.fillText(label||"", pt.x, pt.y+4)
             ctx.fillText(label||"", pt.x, pt.y+4)
           }
-        })
+        })    			
 
 
         // draw the edges
@@ -78,7 +77,7 @@
           var tail = intersect_line_box(pt1, pt2, nodeBoxes[edge.source.name])
           var head = intersect_line_box(tail, pt2, nodeBoxes[edge.target.name])
 
-          ctx.save()
+          ctx.save() 
             ctx.beginPath()
             ctx.lineWidth = (!isNaN(weight)) ? parseFloat(weight) : 1
             ctx.strokeStyle = (color) ? color : "#cccccc"
@@ -136,17 +135,18 @@
 
             $(canvas).bind('mousemove', handler.dragged)
             $(window).bind('mouseup', handler.dropped)
-             var current = nearest.node; //This handles the click event handler. When clicked, you can set different properties.
-             console.log(current)
-              $.post('/categories/childnodes',{data: current}, function(){
+            var parent = nearest.node.name; //This handles the click event handler. When clicked, you can set different properties.
+            $.post('/categories/childnodes',{data: parent}, function(data){
+               categories = data["related_categories"];
 
-                var shuff = particleSystem.addNode("shuff", {
-                    'color': 'blue',
-                    'shape': 'dot',
-                    'label': "shuff"
-                });
-
-                // particleSystem.addEdge(current, shuff)
+               for(i=0;i<categories.length;i++){
+               var child = particleSystem.addNode(categories[i],{
+                'color':'blue',
+                'shape':'square',
+                'label': categories[i]
+               });
+               particleSystem.addEdge(parent, child);
+              };
             });
             return false
           },
@@ -229,5 +229,6 @@
     }
 
     return that
-  }
+  }    
+  
 })()

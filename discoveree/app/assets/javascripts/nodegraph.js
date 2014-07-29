@@ -21,7 +21,6 @@ $(document).ready(function() {
                     'label': childNodes[i]
                 });
                 sys.addEdge(parentNode, childNode);
-
             };
 
         };

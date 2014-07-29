@@ -47,9 +47,9 @@ class CategoriesController < ApplicationController
     # 999.times do
     #   array << (1..1000).to_a.sample.to_s
     # end
-    render :json => {related_categories:
-      ["blue", "red", "green", "yellow", "pink", "purple", "blue", "fuschia", "shuff", "magenta", "green", "orange"]
-      }.to_json
+    # render :json => {related_categories:
+    #   ["blue", "red", "green", "yellow", "pink", "purple", "blue", "fuschia", "shuff", "magenta", "green", "orange"]
+    #   }.to_json
     # render :json => {related_categories: array}.to_json
 
   end
@@ -60,6 +60,6 @@ class CategoriesController < ApplicationController
       }.to_json
   #   puts params
   #   # render :json => {childnodes: ["red","blue","green","purple","shuff","fuschia","megenta"]}
-  # end
+  end
 end
 
