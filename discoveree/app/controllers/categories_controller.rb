@@ -15,12 +15,26 @@ class CategoriesController < ApplicationController
     if @user && @user.authenticate(params[:extension_password])
       @category_array = Category.analyze_url(params[:url])
       @related_categories = Category.format_related(@category_array)
-      @category = Category.new(name: @category_array[0], related_categories: @related_categories)
+      @category = Category.new(name: @category_array[0], related_categories: @related_categories, url: params[:url])
     else
       render :json => { message: "Oops! Looks like you need to sign up first." }
     end
     Content.generate(@category, @user) if @category.save
     render :json => { message: "Created a briefing on: " + @category.name + ". ", anchor: "http://localhost:3000#{user_category_path(@user, @category)}" }
+  end
+
+  def update
+    check_sign_in
+    @category = Category.find(params[:id])
+    @category.contents.each {|content| content.destroy}
+    if validate_user_against(params[:user_id].to_i)
+      @category_array = Category.analyze_url(@category.url)
+      @related_categories = Category.format_related(@category_array)
+      @category.update(related_categories: @related_categories)
+    else
+      render :json => { message: "Oops! Looks like you need to sign up first." }
+    end
+    Content.generate(@category, @user)
   end
 
   def show

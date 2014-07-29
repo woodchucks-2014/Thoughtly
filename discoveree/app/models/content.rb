@@ -31,7 +31,7 @@ class Content < ActiveRecord::Base
         videos.push("http://www.youtube.com/watch?v=#{search_result.id.videoId})")
       end
     end
-    
+
     return videos[0..2]
   end
 

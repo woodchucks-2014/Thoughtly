@@ -109,9 +109,11 @@ a:visited {
   font-family: $font-stack;
   color: $lightbluedark;
   text-decoration:none;
-  #delete{
+  .icons{
     float:right;
     font-size: xx-small;
+    margin-left: 5px;
+    margin-right: 5px;
   }
 }
 
