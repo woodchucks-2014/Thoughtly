@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
     if ($("#viewport").is(":visible") == true) {
-
         var sys = arbor.ParticleSystem(1000, 30, 40)
         sys.parameters({
             gravity: true
