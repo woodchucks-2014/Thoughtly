@@ -36,7 +36,6 @@ class CategoriesController < ApplicationController
   end
 
   def nodegraph
-    puts params["current"]
     @category = Category.find_by(name: params["name"])
     render :json => {main_category: @category.name, related_categories: @category.related_categories}
   end
