@@ -13,7 +13,7 @@
 	<div class="content_list">
 		<% @category.contents.each do |content| %>
 			<% unless content.url == nil || content.source == "wikipedia" %>
-				<div class="container"><%= link_to content.name, content.url %> (<%= content.source %>)</div>
+				<div class="container normal"><%= link_to content.name, content.url %> (<%= content.source %>)<div><%= content.description %></div></div>
 
 			<% end %>
 		<% end %>
