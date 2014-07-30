@@ -1,7 +1,8 @@
 $(function(){
-	$('.container').click(function(){
-	    $(this).animate({
-	    	height: '6em'
-	    }, 500);
-	});
+
+    $('.container').click(function() {
+        $(this).find('div').slideToggle();
+    });
+
 });	
+
