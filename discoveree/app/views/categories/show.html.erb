@@ -9,7 +9,6 @@
 			<h1 id="wikipedia_attribution"><%= link_to '(Wikipedia)', "#{lookup_wikipedia(@category)}" %>
 		</h1><br></div>
 
-
 	<div class="content_list">
 		<% @category.contents.each do |content| %>
 			<% unless content.url == nil || content.source == "wikipedia" %>
@@ -20,7 +19,7 @@
 	</div>
 
 	 <div>
-	 	<canvas  id="viewport" width="1500" height="600">
+	 	<canvas  id="viewport" width="2050" height="600">
 	 	</canvas>
 	</div>
 
