@@ -5,3 +5,12 @@ $(function(){
 	    }, 500);
 	});
 });	
+
+
+$(function(){
+	$('canvas').click(function(){
+	    $(this).animate({
+	    	height: $(window).height()
+	    }, 500);
+	});
+});	
