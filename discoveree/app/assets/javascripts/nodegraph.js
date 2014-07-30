@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     if ($("#viewport").is(":visible") == true) {
-        var sys = arbor.ParticleSystem(937, 20, 40)
+        var sys = arbor.ParticleSystem(20, 2000, .3 )
         sys.parameters({
             gravity: true
         })
@@ -9,15 +9,15 @@ $(document).ready(function() {
 
         function nodeCreate(parentNode, childNodes) {
             parentNode = sys.addNode(parentNode, {
-                'color': 'blue',
-                'shape': 'square',
+                'color': 'goldenrod',
+                'shape': 'rectangle',
                 'label': parentNode
             });
 
             for (i = 0; i < childNodes.length; i++) {
                 var childNode = sys.addNode(childNodes[i], {
-                    'color': 'blue',
-                    'shape': 'square',
+                    'color': 'goldenrod',
+                    'shape': 'rectangle',
                     'label': childNodes[i]
                 });
                 sys.addEdge(parentNode, childNode);

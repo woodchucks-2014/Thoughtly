@@ -10,7 +10,7 @@
       init:function(system){
         particleSystem = system
         particleSystem.screenSize(canvas.width, canvas.height) 
-        particleSystem.screenPadding(40)
+        particleSystem.screenPadding(25)
 
         that.initMouseHandling()
       },
@@ -52,9 +52,9 @@
 
           // draw the text
           if (label){
-            ctx.font = "12px Helvetica"
+            ctx.font = "18px Helvetica"
             ctx.textAlign = "center"
-            ctx.fillStyle = "white"
+            ctx.fillStyle = "black"
             if (node.data.color=='none') ctx.fillStyle = '#333333'
             ctx.fillText(label||"", pt.x, pt.y+4)
             ctx.fillText(label||"", pt.x, pt.y+4)
@@ -77,7 +77,7 @@
           var tail = intersect_line_box(pt1, pt2, nodeBoxes[edge.source.name])
           var head = intersect_line_box(tail, pt2, nodeBoxes[edge.target.name])
 
-          ctx.save() 
+          ctx.save()
             ctx.beginPath()
             ctx.lineWidth = (!isNaN(weight)) ? parseFloat(weight) : 1
             ctx.strokeStyle = (color) ? color : "#cccccc"
