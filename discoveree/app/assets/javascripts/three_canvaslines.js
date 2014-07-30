@@ -1,162 +1,134 @@
-// 			var mouseX = 0, mouseY = 0,
+var nodes = function(){
 
-// 			windowHalfX = window.innerWidth / 2,
-// 			windowHalfY = window.innerHeight / 2,
+			var mouseX = 0, mouseY = 0,
 
-// 			SEPARATION = 200,
-// 			AMOUNTX = 10,
-// 			AMOUNTY = 10,
+			windowHalfX = window.innerWidth / 2,
+			windowHalfY = window.innerHeight / 2,
 
-// 			camera, scene, renderer;
+			SEPARATION = 200,
+			AMOUNTX = 10,
+			AMOUNTY = 10,
 
-// 			init();
-// 			animate();
+			camera, scene, renderer;
 
-// 			function init() {
+			init();
+			animate();
 
-// 				var container, separation = 100, amountX = 50, amountY = 50,
-// 				particles, particle;
+			function init() {
 
-// 				container = document.createElement('div');
-// 				document.body.appendChild(container);
+				var container, separation = 100, amountX = 50, amountY = 50,
+				particles, particle;
 
-// 				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
-// 				camera.position.z = 100;
+				container = document.createElement('div');
+				document.body.appendChild(container);
 
-// 				scene = new THREE.Scene();
+				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 10000 );
 
-// 				renderer = new THREE.CanvasRenderer();
-// 				renderer.setSize( window.innerWidth, window.innerHeight );
-// 				container.appendChild( renderer.domElement );
+				camera.position.z = 100;
 
-// 				// particles
+				scene = new THREE.Scene();
 
-// 				var PI2 = Math.PI * 2;
-// 				var material = new THREE.SpriteCanvasMaterial( {
+				renderer = new THREE.CanvasRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				container.appendChild( renderer.domElement );
 
-// 					color: 0xffffff,
-// 					program: function ( context ) {
+				// particles
 
-// 						context.beginPath();
-// 						context.arc( 0, 0, 0.5, 0, PI2, true );
-// 						context.fill();
+				var PI2 = Math.PI * 2;
+				var material = new THREE.SpriteCanvasMaterial( {
 
-// 					}
+					color: 0xffffff,
+					program: function ( context ) {
 
-// 				} );
+						context.beginPath();
+						context.arc( 0, 0, 0.5, 0, PI2, true );
+						context.fill();
 
-// 				var geometry = new THREE.Geometry();
+					}
 
-// 				for ( var i = 0; i < 100; i ++ ) {
+				} );
+				var geometry = new THREE.Geometry();
 
-// 					particle = new THREE.Sprite( material );
-// 					particle.position.x = Math.random() * 2 - 1;
-// 					particle.position.y = Math.random() * 2 - 1;
-// 					particle.position.z = Math.random() * 2 - 1;
-// 					particle.position.normalize();
-// 					particle.position.multiplyScalar( Math.random() * 10 + 450 );
-// 					particle.scale.x = particle.scale.y = 10;
-// 					scene.add( particle );
+				for ( var i = 0; i < 100; i ++ ) {
 
-// 					geometry.vertices.push( particle.position );
+					particle = new THREE.Sprite( material );
+					particle.position.x = Math.random() * 2 - 1;
+					particle.position.y = Math.random() * 2 - 1;
+					particle.position.z = Math.random() * 2 - 1;
+					particle.position.normalize();
+					particle.position.multiplyScalar( Math.random() * 10 + 450 );
 
-// 				}
+					particle.scale.x = particle.scale.y = 15;
+					scene.add( particle );
 
-// 				// lines
+					geometry.vertices.push( particle.position );
 
-// 				var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0xffffff, opacity: 0.5 } ) );
-// 				scene.add( line );
+				}
 
-// 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-// 				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-// 				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+				// lines
 
-// 				//
 
-// 				window.addEventListener( 'resize', onWindowResize, false );
+				var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0xffffff, opacity: 0.8 } ) );
+				scene.add( line );
 
-// 			}
+				// document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
-// 			function onWindowResize() {
+				//
 
-// 				windowHalfX = window.innerWidth / 2;
-// 				windowHalfY = window.innerHeight / 2;
+				window.addEventListener( 'resize', onWindowResize, false );
 
-// 				camera.aspect = window.innerWidth / window.innerHeight;
-// 				camera.updateProjectionMatrix();
+			}
 
-// 				renderer.setSize( window.innerWidth, window.innerHeight );
+			function onWindowResize() {
 
-// 			}
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
 
-// 			//
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
 
-// 			function onDocumentMouseMove(event) {
+				renderer.setSize( window.innerWidth, window.innerHeight );
 
-// 				mouseX = event.clientX - windowHalfX;
-// 				mouseY = event.clientY - windowHalfY;
+			}
 
-// 			}
+			function onDocumentTouchStart( event ) {
 
-// 			function onDocumentTouchStart( event ) {
+				if ( event.touches.length > 1 ) {
 
-// 				if ( event.touches.length > 1 ) {
 
-// 					event.preventDefault();
+					// event.preventDefault();
 
-// 					mouseX = event.touches[ 0 ].pageX - windowHalfX;
-// 					mouseY = event.touches[ 0 ].pageY - windowHalfY;
+					// mouseX = event.touches[ 0 ].pageX - windowHalfX;
+					// mouseY = event.touches[ 0 ].pageY - windowHalfY;
+				}
+			}
 
-// 				}
+			function onDocumentTouchMove( event ) {
 
-// 			}
+				if ( event.touches.length == 1 ) {
 
-// 			function onDocumentTouchMove( event ) {
+					event.preventDefault();
 
-// 				if ( event.touches.length == 1 ) {
+					mouseX = event.touches[ 0 ].pageX - windowHalfX;
+					mouseY = event.touches[ 0 ].pageY - windowHalfY;
 
-// 					event.preventDefault();
+				}
+			}
+			function animate() {
+				requestAnimationFrame( animate );
 
-// 					mouseX = event.touches[ 0 ].pageX - windowHalfX;
-// 					mouseY = event.touches[ 0 ].pageY - windowHalfY;
+				render();
 
-// 				}
+			}
+			function render() {
+					camera.position.x -= 0.3
+					camera.position.y += 0.3
+					camera.position.z -= 0.3
+					camera.lookAt(scene.position);
+				renderer.render( scene, camera );
 
-// 			}
+			}
 
-// 			//
-
-// 			function animate() {
-
-// 				requestAnimationFrame( animate );
-
-// 				render();
-
-// 			}
-
-// 			function render() {
-// 				  var time = Date.now() * 0.0000005;
-// 				  for ( i = 0; i < scene.children.length; i ++ )
-// 				  camera.position.x += ( mouseX - camera.position.x ) * .05;
-// 					camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
-// 					camera.lookAt(scene.position);
-//   // camera.position.x += ( mouseX - camera.position.x ) * 0.10 * time;
-//   // camera.position.y += ( - mouseY - camera.position.y ) * 0.10;
-//   // camera.lookAt(scene.position);
-// //   for ( i = 0; i < scene.children.length; i ++ ) {
-// //     var object = scene.children[i];
-// //     object.rotation.x = time * i*1;
-// //     object.rotation.y = time * i*1;
-// //     object.rotation.z = time * i*5;
-// //     particle.rotation = time * i*5;
-// //   }
-// //   renderer.render(scene, camera);
-// // }
-
-// 				// camera.position.x += ( mouseX - camera.position.x ) * .05;
-// 				// camera.position.y += ( - mouseY + 200 - camera.position.y ) * .05;
-// 			// 	camera.lookAt( scene.position );
-
-// 				renderer.render( scene, camera );
-
-// 			}
+}

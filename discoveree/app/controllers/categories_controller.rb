@@ -11,12 +11,8 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @user = User.authenticate(params[:extension_email], params[:extension_password])
-    p "*"*10
-    p params
-    p @user
-    if @user
-      puts params[:url]
+    @user = User.find_by_email(params[:extension_email])
+    if @user && @user.authenticate(params[:extension_password])
       @category_array = Category.analyze_url(params[:url])
       @category = Category.new(name: @category_array[0], related_categories: @category_array[1..-1])
       render :json => { message: "Creating a briefing on: " + @category.name + "..." }
@@ -53,6 +49,14 @@ class CategoriesController < ApplicationController
         render :json => {related_categories:
       child_node_array
       }.to_json
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+
+    redirect_to user_categories_path
+    # redirect_to :root
   end
 end
 

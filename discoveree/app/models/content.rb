@@ -28,10 +28,13 @@ class Content < ActiveRecord::Base
     search_response.data.items.each do |search_result|
       case search_result.id.kind
       when 'youtube#video'
-        videos.push("http://www.youtube.com/watch?v=#{search_result.id.videoId})")
+        videos << {:url => "http://www.youtube.com/watch?v=#{search_result.id.videoId})", :name => "#{search_result.snippet.title}", :description=> "#{search_result.snippet.description}"}
       end
     end
+<<<<<<< HEAD
 
+=======
+>>>>>>> 862c0b76fa1bb32c04e0720b65bb319988f81233
     return videos[0..2]
   end
 
@@ -42,10 +45,10 @@ class Content < ActiveRecord::Base
     videos = []
     unless response["elements"] == nil
       response["elements"].each do |entry|
-        videos << "https://www.coursera.org/course/#{entry['shortName']}"
+        videos << {:url => "https://www.coursera.org/course/#{entry['shortName']}", :name => entry['name']} 
       end
     end
-    videos[0..2]
+    return [videos[0]]
   end
 
   def self.new_york_times(query)
@@ -53,12 +56,11 @@ class Content < ActiveRecord::Base
     url = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=#{subject}&page=2&api-key=#{ENV['NY_TIMES_API_KEY']}"
     url =  URI.encode(url)
     response = HTTParty.get(url)
-    article_urls = []
-
+    articles = []
     response["response"]["docs"].each do |article|
-    article_urls << article["web_url"]
+      articles << {:url => article["web_url"], :name => article["headline"]["main"], :description=> article["lead_paragraph"]}
     end
-    return article_urls[0..2]
+    return articles[0..2]
   end
 
   def self.ted_search(query)
@@ -67,9 +69,14 @@ class Content < ActiveRecord::Base
     response = HTTParty.get(url)
     videos = []
     response["results"].each do |result|
-      videos << "http://www.ted.com/talks/#{result["talk"]["slug"]}"
+      videos << {:url => "http://www.ted.com/talks/#{result["talk"]["slug"]}", :name=> result["talk"]["name"]} 
     end
-    return videos[0..2]
+    results = []
+    videos[0..1].each do |video|
+      video[:description] = Content.scrape_description(video[:url], "ted")
+      results << video
+    end 
+    return results
   end
 
   def self.wikipedia_search(query)
@@ -77,12 +84,40 @@ class Content < ActiveRecord::Base
     ["http://en.wikipedia.org/wiki?curid=" + page.page["pageid"].to_s]
   end
 
+<<<<<<< HEAD
   def self.bing_keywords(query)
     url ="http://api.bing.com/osjson.aspx?query="
     query = query.split(" ").join("%20")
     url = "http://api.bing.com/osjson.aspx?query=#{query}"
     response = HTTParty.get(url)
     return response.to_a
+=======
+  def self.financial_times_search(query)
+    url =  URI.encode('http://api.pearson.com/v2/ft/articles?search=' + query + '&apikey=' + ENV['FINANCIAL_TIMES'])
+    response = HTTParty.get(url)
+    articles = []
+    results = []
+    response["results"].each do |article|
+      articles << {:url => article['article_url'], :name=> article['headline'], :description=> "The latest UK and international business, finance, economic and political news, comment and analysis from the Financial Times on FT.com."}
+    end
+    return articles[0..1]
+  end
+
+  def self.scrape_description(url, source)
+    case 
+    when url =~ /ted/
+      request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['alchemy_key'] +'&url=' + url + '&outputMode=json&cquery=P'
+      results = JSON.parse(RestClient.get request, :content_type => :json, :accept => :json)
+      return results["queryResults"][0]["resultText"]
+    when url =~ /coursera/
+      request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['alchemy_key'] +'&url=' + url + '&outputMode=json&cquery=DIV'
+      results = JSON.parse(RestClient.get request, :content_type => :json, :accept => :json)
+      return results["queryResults"][0]["resultText"] unless results["queryResults"]
+      return "Coursera is an education platform that partners with top universities and organizations worldwide, to offer courses online for anyone to take, for free."
+    else
+      return "nada"
+    end  
+>>>>>>> 862c0b76fa1bb32c04e0720b65bb319988f81233
   end
 
   def self.generate(category, user)
@@ -91,15 +126,23 @@ class Content < ActiveRecord::Base
     "coursera" => Content.coursera(query),
     "nytimes" => Content.new_york_times(query),
     "ted" => Content.ted_search(query),
+    "financial times" => Content.financial_times_search(query),
     "wikipedia" => Content.wikipedia_search(query) }
     user.categories << category
     results.each_pair do |source, contents|
       unless contents == nil
         contents.each do |content|
-          user.categories.last.contents << Content.create(url: content, source: source)
+          if source == "ted" 
+            user.categories.last.contents << Content.create(url: content[:url], source: source, name: content[:name], description: content[:description])
+          elsif source == "wikipedia" 
+            user.categories.last.contents << Content.create(url: content, source: source)
+          else 
+            user.categories.last.contents << Content.create(url: content[:url], source: source, name: content[:name])     
+          end
         end
       end
     end
   end
+
 
 end

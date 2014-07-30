@@ -1,24 +1,28 @@
-<h1 id="category_name"><%=@category.name%></h1>
-<div id="summary">
-	<%= @summary %>
-	<br><br>
-	<div id="wikipedia_attribution"><%= link_to 'source: Wikipedia', "#{lookup_wikipedia(@category)}" %></div>
-</div>
 
-<br>
+<div id="category_show">
 
-<div id="contents">
-	<h1 id="category_name"><%=@category.name%></h1>
+  	<h2 id="category_name"><%=@category.name%></h2>
 
-	<ul><% @category.contents.each do |content| %>
-		<% unless content.url == nil %>
-			<li class="container"><%= link_to content.url, content.url %></li>
+  	<div id="summary">
+  		<%= @summary %>...<br><br>
+
+			<h1 id="wikipedia_attribution"><%= link_to '(Wikipedia)', "#{lookup_wikipedia(@category)}" %>
+		</h1><br></div>
+
+
+	<div class="content_list">
+		<% @category.contents.each do |content| %>
+			<% unless content.url == nil || content.source == "wikipedia" %>
+				<div class="container"><%= link_to content.name, content.url %> (<%= content.source %>)</div>
+
+			<% end %>
 		<% end %>
-	<% end %></ul>
+	</div>
 
-	<canvas id="viewport" height="1250" width="1250"></canvas>
+	 <div>
+	 	<canvas  id="viewport" width="1500" height="600">
+	 	</canvas>
+	</div>
 
 </div>
-
-
-
+</div>

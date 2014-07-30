@@ -1,0 +1,16 @@
+
+
+
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+@media only screen and (max-width: 480px) {
+  #summary,
+  #contents,
+  #welcome,
+  #viewport { 
+    width: 100%;
+    padding: none;
+  }
+}
+
+

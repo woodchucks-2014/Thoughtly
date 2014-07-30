@@ -47,7 +47,6 @@ gem 'font-awesome-sass'
 gem 'gon'
 
 group :production, :staging do
-  gem 'pg'
   gem 'rails_12factor'
 end
 
@@ -73,6 +72,8 @@ end
 # gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem "bcrypt", :require => "bcrypt"
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]

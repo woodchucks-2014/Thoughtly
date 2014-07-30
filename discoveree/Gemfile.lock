@@ -267,6 +267,7 @@ PLATFORMS
 
 DEPENDENCIES
   alchemy-api-rb
+  bcrypt
   capybara
   coffee-rails (~> 4.0.0)
   d3-rails

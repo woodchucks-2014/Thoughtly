@@ -61,7 +61,6 @@
           }
         })
 
-
         // draw the edges
         particleSystem.eachEdge(function(edge, pt1, pt2){
           // edge: {source:Node, target:Node, length:#, data:{}}
@@ -113,8 +112,6 @@
             ctx.restore()
           }
         })
-
-
 
       },
       initMouseHandling:function(){
