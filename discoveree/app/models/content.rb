@@ -31,6 +31,10 @@ class Content < ActiveRecord::Base
         videos << {:url => "http://www.youtube.com/watch?v=#{search_result.id.videoId})", :name => "#{search_result.snippet.title}", :description=> "#{search_result.snippet.description}"}
       end
     end
+<<<<<<< HEAD
+
+=======
+>>>>>>> 862c0b76fa1bb32c04e0720b65bb319988f81233
     return videos[0..2]
   end
 
@@ -80,6 +84,14 @@ class Content < ActiveRecord::Base
     ["http://en.wikipedia.org/wiki?curid=" + page.page["pageid"].to_s]
   end
 
+<<<<<<< HEAD
+  def self.bing_keywords(query)
+    url ="http://api.bing.com/osjson.aspx?query="
+    query = query.split(" ").join("%20")
+    url = "http://api.bing.com/osjson.aspx?query=#{query}"
+    response = HTTParty.get(url)
+    return response.to_a
+=======
   def self.financial_times_search(query)
     url =  URI.encode('http://api.pearson.com/v2/ft/articles?search=' + query + '&apikey=' + ENV['FINANCIAL_TIMES'])
     response = HTTParty.get(url)
@@ -105,6 +117,7 @@ class Content < ActiveRecord::Base
     else
       return "nada"
     end  
+>>>>>>> 862c0b76fa1bb32c04e0720b65bb319988f81233
   end
 
   def self.generate(category, user)

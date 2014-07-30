@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140728233222) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "related_categories"
+    t.string   "related_categories", array: true
   end
 
   create_table "contents", force: true do |t|
