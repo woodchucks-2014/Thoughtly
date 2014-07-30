@@ -27,18 +27,19 @@ feature "Welcomes", :type => :feature do
       expect(current_path).to eq(user_categories_path(user))
     end
 
-    xscenario "user fills out form with invalid credentials" do
+    scenario "user fills out form with invalid credentials" do
       visit root_path
       click_link 'get started >>'
       click_link 'or create a new account'
-      fill_in 'Email', with: 'invalid entry'
-      fill_in 'Password', with: '!@%!^@!'
-      fill_in 'Confirm Password', with: '#^@&$^'
+      fill_in 'Email', with: 'bobo@gmail.com'
+      fill_in 'Password', with: 'testtest'
+      fill_in 'Confirm Password', with: 'testtest'
       # fill_in 'password Confirmation', with: 'test'
       click_button 'Sign Me Up!'
 
-      expect(current_path).to eq(root_path)
-      expect(page).to have_content('Invalid credentials!')
+      user = User.find_by_email('bobo@gmail.com')
+
+      expect(page).to have_content 'Invalid credentials!'
     end
   end
 
