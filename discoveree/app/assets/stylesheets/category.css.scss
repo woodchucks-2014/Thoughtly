@@ -31,6 +31,17 @@ canvas#viewport {
   width: 100%;
 }
 
+.description {
+  padding-top: 10px;
+  color: white;
+  font-weight: 100;
+  display: none;
+}
+
+.expanded {
+  height: 4em;
+}
+
 #category_show {
   padding: 5em;
 }

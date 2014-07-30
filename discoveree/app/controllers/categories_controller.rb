@@ -53,7 +53,6 @@ class CategoriesController < ApplicationController
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-
     redirect_to user_categories_path
     # redirect_to :root
   end
