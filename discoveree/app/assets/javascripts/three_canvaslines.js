@@ -93,15 +93,6 @@ var nodes = function(){
 
 			}
 
-			//
-
-
-			// function onDocumentMouseMove(event) {
-			// 	mouseX = event.clientX - windowHalfX;
-			// 	mouseY = event.clientY - windowHalfY;
-
-			// }
-
 			function onDocumentTouchStart( event ) {
 
 				if ( event.touches.length > 1 ) {

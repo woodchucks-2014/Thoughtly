@@ -14,8 +14,8 @@ class CategoriesController < ApplicationController
     @user = User.find_by_email(params[:extension_email])
     if @user && @user.authenticate(params[:extension_password])
       @category_array = Category.analyze_url(params[:url])
-      @related_categories = Category.format_related(@category_array)
-      @category = Category.new(name: @category_array[0], related_categories: @related_categories)
+      @category = Category.new(name: @category_array[0], related_categories: @category_array[1..-1])
+      render :json => { message: "Creating a briefing on: " + @category.name + "..." }
     else
       render :json => { message: "Oops! Looks like you need to sign up first." }
     end
@@ -30,20 +30,25 @@ class CategoriesController < ApplicationController
       unless Category.exists?(params[:id].to_i)
         not_found
       end
-      @summary = @category.generate_summary
+      @summary = Category.generate_summary(@category.name)[0..500] + ". . ."
     else
       redirect_to user_categories_path(@user)
     end
   end
 
   def nodegraph
-    puts params["name"]
+    puts params["current"]
     @category = Category.find_by(name: params["name"])
-    render :json => {main_category: @category.name, related_categories: @category.related_categories.split("%")}.to_json
+    render :json => {main_category: @category.name, related_categories: @category.related_categories}
   end
 
   def childnodes
-    render :json => {childnodes: ["red","blue","green","purple","shuff","fuschia","megenta"]}
+    text = Category.generate_summary(params["data"])
+    child_node_array = Category.analyze_text(text)
+    puts child_node_array
+        render :json => {related_categories:
+      child_node_array
+      }.to_json
   end
 
   def destroy
@@ -54,3 +59,4 @@ class CategoriesController < ApplicationController
     # redirect_to :root
   end
 end
+

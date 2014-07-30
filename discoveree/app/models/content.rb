@@ -80,6 +80,7 @@ class Content < ActiveRecord::Base
     ["http://en.wikipedia.org/wiki?curid=" + page.page["pageid"].to_s]
   end
 
+
   def self.financial_times_search(query)
     url =  URI.encode('http://api.pearson.com/v2/ft/articles?search=' + query + '&apikey=' + ENV['FINANCIAL_TIMES'])
     response = HTTParty.get(url)
@@ -104,7 +105,7 @@ class Content < ActiveRecord::Base
       return "Coursera is an education platform that partners with top universities and organizations worldwide, to offer courses online for anyone to take, for free."
     else
       return "nada"
-    end  
+    end
   end
 
   def self.generate(category, user)
