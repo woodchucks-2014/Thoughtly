@@ -110,9 +110,9 @@ class Content < ActiveRecord::Base
 
   def self.generate(category, user)
     query = category.name
-    results = { "youtube" => Content.youtube_search(query),
+    results = { "nytimes" => Content.new_york_times(query),
+    "youtube" => Content.youtube_search(query),
     "coursera" => Content.coursera(query),
-    "nytimes" => Content.new_york_times(query),
     "ted" => Content.ted_search(query),
     "financial times" => Content.financial_times_search(query),
     "wikipedia" => Content.wikipedia_search(query) }
@@ -120,7 +120,7 @@ class Content < ActiveRecord::Base
     results.each_pair do |source, contents|
       unless contents == nil
         contents.each do |content|
-          if source == "ted" 
+          if source == "ted" || source == "youtube" || source == "nytimes"
             user.categories.last.contents << Content.create(url: content[:url], source: source, name: content[:name], description: content[:description])
           elsif source == "wikipedia" 
             user.categories.last.contents << Content.create(url: content, source: source)
