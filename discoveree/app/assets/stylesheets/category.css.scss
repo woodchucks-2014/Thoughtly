@@ -1,14 +1,10 @@
 $lightblue:      #45a4ff; 
 $lightbluedark:  darken($lightblue, 30%);  
 
-#contents {
-  width: 100%;
-}
 
 #summary {
   margin-top: 1em;
   color: #45a4ff;
-  margin-left: 1%;
   border: 10px;
   margin-bottom: 2%;
   font-family: 'ubuntu';
@@ -21,7 +17,14 @@ $lightbluedark:  darken($lightblue, 30%);
   /*box-shadow: 1px 1px 1px #2C2E33;*/
 }
 
+#content_list {
+  width: 100%;
+  margin-bottom: 100px;
+}
+
 canvas#viewport {
 	border: 1px solid; 
   color: $lightbluedark;
+  margin-top: 5%;
+  width: 100%;
 }

@@ -71,10 +71,6 @@ h2 {
 }
 
 
-h1:hover {
-  font-size: 1.5em;
-  /*text-shadow: 0 0 0.7em $lightblue*/
-}
 
 h3 {
   font-size: 1.3em;
@@ -108,8 +104,7 @@ a:visited {
   border: 1px solid;
   border-left: none;
   border-right:none;
-  margin-right:2%;
-  margin: 1em;
+  margin: 0 auto;
   padding: 1em;
   font-size: 1.25em;
   overflow: auto;
@@ -117,7 +112,7 @@ a:visited {
   color: $lightbluedark;
   text-decoration:none;
   word-wrap: break-word;
-  width: 100%;
+
 
   #delete{
     float:right;
@@ -128,7 +123,6 @@ a:visited {
 .container:hover {
   opacity: 0.8;
   background-color: #0e1e2c;
-  font-weight: 100;
   text-shadow: 0 0 0.02em $lightblue;
 }
 
@@ -238,3 +232,10 @@ nav #title {
 #user_password_confirmation {
   background-color: $textcolor;
 }
+
+#categories {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
