@@ -78,31 +78,29 @@ feature "Welcomes", :type => :feature do
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
       click_button 'Sign Me In!'
-
       expect(current_path).to eq(user_categories_path(user))
-    end
 
-  end
-  feature "ability to view user profile page" do
-
-    let(:user) { FactoryGirl.create :user}
-    let(:nut) {FactoryGirl.create :nut}
-
-    scenario "has an ability to delete a category" do
-      visit root_path
-      click_link 'get started >>'
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
-      # fill_in 'password Confirmation', with: 'test'
-      click_button 'Sign Me In!'
-      click_button 'sign-in fa-2x'
-
+      find("#c").find("a").click
       expect(current_path).to eq(root_path)
     end
 
-
-
   end
+  # feature "ability to view user profile page" do
+
+  #   let(:user) { FactoryGirl.create :user}
+
+  #   scenario "has an ability to delete a category" do
+  #     visit root_path
+  #     click_link 'get started >>'
+  #     fill_in 'Email', with: user.email
+  #     fill_in 'Password', with: user.password
+  #     # fill_in 'password Confirmation', with: 'test'
+  #     click_button 'Sign Me In!'
+  #     click_button 'sign-in fa-2x'
+
+  #     expect(current_path).to eq(root_path)
+  #   end
+  # end
 
 
 
