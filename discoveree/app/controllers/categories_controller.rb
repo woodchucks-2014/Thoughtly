@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
       render :json => { message: "Oops! Looks like you need to sign up first." }
     end
     Content.generate(@category, @user) if @category.save
-    render :json => { message: "Created a briefing on: " + @category.name + ". ", anchor: "http://localhost:3000#{user_category_path(@user, @category)}" }
+    render :json => { message: "Created a briefing on: " + @category.name + ". ", anchor: "http://glacial-citadel-1040.herokuapp.com#{user_category_path(@user, @category)}" }
   end
 
   def show
@@ -36,7 +36,6 @@ class CategoriesController < ApplicationController
   end
 
   def nodegraph
-    puts params["current"]
     @category = Category.find_by(name: params["name"])
     render :json => {main_category: @category.name, related_categories: @category.related_categories}
   end

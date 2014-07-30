@@ -20,11 +20,3 @@
 //= require_tree .
 
 
-  $("#summary").click( function() {
-  	toggle(function(){
-        $(this).animate({height:40},200);
-    },function(){
-        $(this).animate({height:10},200);
-  });
-  });
-
