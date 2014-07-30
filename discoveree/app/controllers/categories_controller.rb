@@ -45,7 +45,6 @@ class CategoriesController < ApplicationController
   def childnodes
     text = Category.generate_summary(params["data"])
     child_node_array = Category.analyze_text(text)
-    puts child_node_array
         render :json => {related_categories:
       child_node_array
       }.to_json
