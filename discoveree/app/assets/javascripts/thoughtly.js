@@ -10,8 +10,6 @@ $(function(){
 		})
 	})
 
-	$('#content_list').setInterval({window.location.reload()}, 500);
-
 	$('body').on("click", '.event', function(e){
 		e.preventDefault();
 		$.ajax({
