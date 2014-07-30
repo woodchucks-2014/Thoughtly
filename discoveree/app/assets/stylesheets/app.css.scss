@@ -104,6 +104,41 @@ a:visited {
 }
 
 /*for contents*/
+.container-category {
+  border: 2px solid;
+  border-left: 5px solid #0e1e2c;
+  border-right:none;
+  margin: 0 auto;
+  margin-bottom: 0.75em;
+  padding: 1em;
+  font-size: 1.75em;
+  overflow: auto;
+  font-family: $font-stack;
+  color: $lightbluedark;
+  text-decoration:none;
+  word-wrap: break-word;
+
+  #delete {
+    float:right;
+    font-size: small;
+  }
+}
+
+.container-category:hover {
+  opacity: 0.8;
+  background-color: #214769;
+  border-left: 5px solid rgb(31, 225, 1);
+  text-shadow: 0 0 0.02em $lightblue;
+}
+
+.container-category a {
+  /*color: #45a4ff*/
+  color: $buttoncolor;
+}
+
+
+
+
 .container {
   border: 2px solid;
   border-left: 5px solid #0e1e2c;
@@ -111,14 +146,14 @@ a:visited {
   margin: 0 auto;
   margin-bottom: 0.75em;
   padding: 1em;
-  font-size: 1.5em;
+  font-size: 1.75em;
   overflow: auto;
   font-family: $font-stack;
   color: $lightbluedark;
   text-decoration:none;
   word-wrap: break-word;
 
-  #delete{
+  #delete {
     float:right;
     font-size: small;
   }
@@ -134,6 +169,13 @@ a:visited {
 .container a {
   /*color: #45a4ff*/
   color: $buttoncolor;
+}
+
+div.container div {
+  display: none;
+  color: white;
+  font-weight: 100;
+  padding-top: 15px;
 }
 
 /*generic id for adding margin, can be redone*/

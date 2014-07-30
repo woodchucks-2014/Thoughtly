@@ -80,6 +80,7 @@ class Content < ActiveRecord::Base
     ["http://en.wikipedia.org/wiki?curid=" + page.page["pageid"].to_s]
   end
 
+
   def self.financial_times_search(query)
     url =  URI.encode('http://api.pearson.com/v2/ft/articles?search=' + query + '&apikey=' + ENV['FINANCIAL_TIMES'])
     response = HTTParty.get(url)
@@ -94,24 +95,24 @@ class Content < ActiveRecord::Base
   def self.scrape_description(url, source)
     case 
     when url =~ /ted/
-      request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['alchemy_key'] +'&url=' + url + '&outputMode=json&cquery=P'
+      request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['ALCHEMY_KEY'] +'&url=' + url + '&outputMode=json&cquery=P'
       results = JSON.parse(RestClient.get request, :content_type => :json, :accept => :json)
       return results["queryResults"][0]["resultText"]
     when url =~ /coursera/
-      request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['alchemy_key'] +'&url=' + url + '&outputMode=json&cquery=DIV'
+      request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['ALCHEMY_KEY'] +'&url=' + url + '&outputMode=json&cquery=DIV'
       results = JSON.parse(RestClient.get request, :content_type => :json, :accept => :json)
       return results["queryResults"][0]["resultText"] unless results["queryResults"]
       return "Coursera is an education platform that partners with top universities and organizations worldwide, to offer courses online for anyone to take, for free."
     else
       return "nada"
-    end  
+    end
   end
 
   def self.generate(category, user)
     query = category.name
-    results = { "youtube" => Content.youtube_search(query),
+    results = { "nytimes" => Content.new_york_times(query),
+    "youtube" => Content.youtube_search(query),
     "coursera" => Content.coursera(query),
-    "nytimes" => Content.new_york_times(query),
     "ted" => Content.ted_search(query),
     "financial times" => Content.financial_times_search(query),
     "wikipedia" => Content.wikipedia_search(query) }
@@ -119,7 +120,7 @@ class Content < ActiveRecord::Base
     results.each_pair do |source, contents|
       unless contents == nil
         contents.each do |content|
-          if source == "ted" 
+          if source == "ted" || source == "youtube" || source == "nytimes"
             user.categories.last.contents << Content.create(url: content[:url], source: source, name: content[:name], description: content[:description])
           elsif source == "wikipedia" 
             user.categories.last.contents << Content.create(url: content, source: source)

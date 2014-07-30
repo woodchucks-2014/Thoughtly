@@ -6,7 +6,7 @@ $lightbluedark:  darken($lightblue, 30%);
   margin-top: 1em;
   color: #45a4ff;
   border: 10px;
-  font-size: 1.5em;
+  font-size: 2.0em;
   margin-bottom: 2%;
   font-weight: 400;
   font-family: 'ubuntu';
@@ -29,6 +29,17 @@ canvas#viewport {
   color: $lightbluedark;
   margin-top: 5;
   width: 100%;
+}
+
+.description {
+  padding-top: 10px;
+  color: white;
+  font-weight: 100;
+  display: none;
+}
+
+.expanded {
+  height: 4em;
 }
 
 #category_show {
