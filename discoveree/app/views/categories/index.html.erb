@@ -1,4 +1,4 @@
-<div id="categories">
+<div id="category_show">
 <% @current_user.categories.each do |category| %>
 	<div class="container"><%= link_to category.name, user_category_path(@current_user, category) %>
   <span id="delete"><%= link_to 'Delete', "/users/#{@current_user.id}/categories/#{category.id}", method: :delete %></span>

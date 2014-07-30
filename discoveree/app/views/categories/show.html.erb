@@ -1,16 +1,13 @@
-<ul class="flex-container">
+<div id="category_show">
 
-  <li class="flex-item">
-  	<h2 id="category_name"><%=@category.name%></h2></li>
+  	<h2 id="category_name"><%=@category.name%></h2>
 
-  <li class="flex-item">
-  	<h1 id="summary">
+  	<div id="summary">
   		<%= @summary %>...<br><br>
 
-			<div id="wikipedia_attribution"><%= link_to '(Wikipedia)', "#{lookup_wikipedia(@category)}" %>
+			<h1 id="wikipedia_attribution"><%= link_to '(Wikipedia)', "#{lookup_wikipedia(@category)}" %>
 		</h1><br></div>
 
-	</li>
 
 	<div class="content_list">
 		<% @category.contents.each do |content| %>
@@ -21,9 +18,10 @@
 		<% end %>
 	</div>
 
-	 <li class="flex-item">
-	 	<canvas class="container" id="viewport" width="600" height="600">
+	 <div>
+	 	<canvas  id="viewport" width="1500" height="600">
 	 	</canvas>
-	 </li>
-</ul>
+	</div>
 
+</div>
+</div>
