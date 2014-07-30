@@ -95,11 +95,11 @@ class Content < ActiveRecord::Base
   def self.scrape_description(url, source)
     case 
     when url =~ /ted/
-      request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['alchemy_key'] +'&url=' + url + '&outputMode=json&cquery=P'
+      request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['ALCHEMY_KEY'] +'&url=' + url + '&outputMode=json&cquery=P'
       results = JSON.parse(RestClient.get request, :content_type => :json, :accept => :json)
       return results["queryResults"][0]["resultText"]
     when url =~ /coursera/
-      request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['alchemy_key'] +'&url=' + url + '&outputMode=json&cquery=DIV'
+      request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['ALCHEMY_KEY'] +'&url=' + url + '&outputMode=json&cquery=DIV'
       results = JSON.parse(RestClient.get request, :content_type => :json, :accept => :json)
       return results["queryResults"][0]["resultText"] unless results["queryResults"]
       return "Coursera is an education platform that partners with top universities and organizations worldwide, to offer courses online for anyone to take, for free."

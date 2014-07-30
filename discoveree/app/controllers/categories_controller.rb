@@ -15,7 +15,6 @@ class CategoriesController < ApplicationController
     if @user && @user.authenticate(params[:extension_password])
       @category_array = Category.analyze_url(params[:url])
       @category = Category.new(name: @category_array[0], related_categories: @category_array[1..-1])
-      render :json => { message: "Creating a briefing on: " + @category.name + "..." }
     else
       render :json => { message: "Oops! Looks like you need to sign up first." }
     end
