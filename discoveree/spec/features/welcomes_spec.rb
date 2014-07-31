@@ -86,23 +86,5 @@ feature "Welcomes", :type => :feature do
     end
 
   end
-  # feature "ability to view user profile page" do
-
-  #   let(:user) { FactoryGirl.create :user}
-
-  #   scenario "has an ability to delete a category" do
-  #     visit root_path
-  #     click_link 'get started >>'
-  #     fill_in 'Email', with: user.email
-  #     fill_in 'Password', with: user.password
-  #     # fill_in 'password Confirmation', with: 'test'
-  #     click_button 'Sign Me In!'
-  #     click_button 'sign-in fa-2x'
-
-  #     expect(current_path).to eq(root_path)
-  #   end
-  # end
-
-
 
 end
