@@ -82,10 +82,6 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
     font-awesome-sass (4.1.0)
-      actionpack (>= 2.3.0)
-      json
-      multi_json
-      request_store (>= 1.0.5)
       sass (~> 3.2)
     gon (5.1.2)
       actionpack (>= 2.3.0)
