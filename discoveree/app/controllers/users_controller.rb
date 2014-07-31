@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   include UserHelper
 
   def index
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    session.clear
+    session[:user_id] = nil
     redirect_to :root
   end
 
@@ -49,5 +50,6 @@ class UsersController < ApplicationController
   def user_params(params)
     params.require(:user).permit(:email, :password, :password_confirmation)
   end
+
 
 end

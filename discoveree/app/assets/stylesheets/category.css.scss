@@ -1,19 +1,17 @@
 $lightblue:      #45a4ff; 
 $lightbluedark:  darken($lightblue, 30%);  
 
-#contents {
-  width: 100%;
-}
 
 #summary {
   margin-top: 1em;
   color: #45a4ff;
-  margin-left: 1%;
   border: 10px;
+  font-size: 2.0em;
   margin-bottom: 2%;
+  font-weight: 400;
   font-family: 'ubuntu';
   line-height: 145%;  
-  background: #16314b;
+  background: $lightbluedark;
   padding: 0.75em;
   color: white;
   border-radius: 5px;
@@ -21,7 +19,29 @@ $lightbluedark:  darken($lightblue, 30%);
   /*box-shadow: 1px 1px 1px #2C2E33;*/
 }
 
+#content_list {
+  width: 100%;
+  margin-bottom: 100px;
+}
+
 canvas#viewport {
-	border: 1px solid; 
+	border: 3px solid; 
   color: $lightbluedark;
+  margin-top: 5;
+  width: 100%;
+}
+
+.description {
+  padding-top: 10px;
+  color: white;
+  font-weight: 100;
+  display: none;
+}
+
+.expanded {
+  height: 4em;
+}
+
+#category_show {
+  padding: 5em;
 }

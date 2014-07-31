@@ -1,23 +1,5 @@
 
-.flex-container {
-  padding-right: 5%;
-  padding-top: 2%;
-  list-style: none;
-  flex-wrap: wrap;
-  
-  display: -webkit-flex;
-  display: flex;
-  
-  -webkit-flex-flow: row wrap;
-  align-content: stretch;
-  justify-content: space-around;
-}
 
-.flex-item {
-  align-items: center;
-  margin-right: 7%;
-  margin-left: 7%;
-}
 
 
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */

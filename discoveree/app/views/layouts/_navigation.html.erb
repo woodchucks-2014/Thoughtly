@@ -3,9 +3,9 @@
 <div id="fa">
 	<ul>
     <% if @current_user %>
-    <li id="c"><%= link_to icon('sign-in fa-2x'), logout_path(@current_user) %></li>
+    <li id="c"><%= link_to icon('sign-out fa-3x'), logout_path(@current_user), 'data-no-turbolink' => true %></li>
     <% end %>
-    <li id="a"><%= link_to icon('home fa-2x'), root_path %></li>
+    <li id="a"><%= link_to icon('home fa-3x'), root_path %></li>
     <li>Session: <%= session[:user_id] %></li>
   </ul>
 </div>

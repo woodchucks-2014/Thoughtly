@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post '/categories/nodegraph' => 'categories#nodegraph'
 
 
-  get "/categories/childnodes" => 'categories#childnodes'
+  post "/categories/childnodes" => 'categories#childnodes'
 
   get '*missing' => redirect('/')
 

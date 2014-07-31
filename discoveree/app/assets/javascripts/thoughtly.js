@@ -9,8 +9,8 @@ $(function(){
 			}
 		})
 	})
-	
-	$('body').on("click", '.event', function(e){
+
+	$('#welcome').on("click", '.event', function(e){
 		e.preventDefault();
 		$.ajax({
 			type: "GET",
@@ -33,6 +33,9 @@ $(function(){
 			}
 		})
 	})
+
+	
+	
 })
 
 // $(function(){

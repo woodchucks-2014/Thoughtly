@@ -1,5 +1,5 @@
 (function(){
-  
+
   Renderer = function(canvas){
     var canvas = $(canvas).get(0)
     var ctx = canvas.getContext("2d");
@@ -10,7 +10,7 @@
       init:function(system){
         particleSystem = system
         particleSystem.screenSize(canvas.width, canvas.height) 
-        particleSystem.screenPadding(40)
+        particleSystem.screenPadding(25)
 
         that.initMouseHandling()
       },
@@ -52,14 +52,14 @@
 
           // draw the text
           if (label){
-            ctx.font = "12px Helvetica"
+            ctx.font = "18px Helvetica"
             ctx.textAlign = "center"
-            ctx.fillStyle = "white"
+            ctx.fillStyle = "black"
             if (node.data.color=='none') ctx.fillStyle = '#333333'
             ctx.fillText(label||"", pt.x, pt.y+4)
             ctx.fillText(label||"", pt.x, pt.y+4)
           }
-        })    			
+        })
 
         // draw the edges
         particleSystem.eachEdge(function(edge, pt1, pt2){
@@ -76,7 +76,7 @@
           var tail = intersect_line_box(pt1, pt2, nodeBoxes[edge.source.name])
           var head = intersect_line_box(tail, pt2, nodeBoxes[edge.target.name])
 
-          ctx.save() 
+          ctx.save()
             ctx.beginPath()
             ctx.lineWidth = (!isNaN(weight)) ? parseFloat(weight) : 1
             ctx.strokeStyle = (color) ? color : "#cccccc"
@@ -128,12 +128,23 @@
             var pos = $(canvas).offset();
             _mouseP = arbor.Point(e.pageX-pos.left, e.pageY-pos.top)
             selected = nearest = dragged = particleSystem.nearest(_mouseP);
-
             if (dragged.node !== null) dragged.node.fixed = true
 
             $(canvas).bind('mousemove', handler.dragged)
             $(window).bind('mouseup', handler.dropped)
-
+            var parent = nearest.node.name; //This handles the click event handler. When clicked, you can set different properties.
+            $.post('/categories/childnodes',{data: parent}, function(data){
+               categories = data["related_categories"];
+               console.log(data)
+               for(i=0;i<categories.length;i++){
+               var child = particleSystem.addNode(categories[i],{
+                'color':'green',
+                'shape':'square',
+                'label': categories[i]
+               });
+               particleSystem.addEdge(parent, child);
+              };
+            });
             return false
           },
           dragged:function(e){
@@ -146,6 +157,22 @@
               var p = particleSystem.fromScreen(s)
               dragged.node.p = p
             }
+
+            return false
+          },
+
+          down:function(e){
+            var pos = $(canvas).offset();
+            _mouseP = arbor.Point(e.pageX-pos.left, e.pageY-pos.top)
+            nearest = dragged = particleSystem.nearest(_mouseP);
+            move = false;
+
+            if (dragged && dragged.node !== null){
+            dragged.node.fixed = true
+            }
+
+            $(canvas).bind('mousemove', handler.dragged)
+            $(window).bind('mouseup', handler.dropped)
 
             return false
           },

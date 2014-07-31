@@ -29,8 +29,9 @@ body {
   /*background-image:url('lines.png');*/
   background-size: 100%;
   background-repeat: no-repeat;
-  background: $primary-color;
+  background: #0e1e2c;
   overflow:scroll;
+  font-weight: 700;
   position:relative;
 }
 
@@ -71,13 +72,9 @@ h2 {
 }
 
 
-h1:hover {
-  font-size: 1.5em;
-  /*text-shadow: 0 0 0.7em $lightblue*/
-}
 
 h3 {
-  font-size: 1.3em;
+  font-size: 1.8em;
   font-family: $font-stack;
   font-weight: 200;
   color: #45a4ff;
@@ -86,6 +83,8 @@ h3 {
 #get_started a {
   text-decoration: none;
   color: $linkbright;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 #get_started a:visited {
@@ -95,50 +94,88 @@ h3 {
 
 a {
   text-decoration: none;
-  color: $linkbright;
+  color: #C1BFB0;
 }
 
 a:visited {
   text-decoration: none;
-  color: $visited;
+  color: #C1BFB0;
+
 }
 
 /*for contents*/
-.container {
-  border: 1px solid;
-  border-left: none;
+.container-category {
+  border: 2px solid;
+  border-left: 5px solid #0e1e2c;
   border-right:none;
-  margin-right:2%;
-  margin: 1em;
+  margin: 0 auto;
+  margin-bottom: 0.75em;
   padding: 1em;
-  font-size: 1.25em;
+  font-size: 1.75em;
   overflow: auto;
   font-family: $font-stack;
   color: $lightbluedark;
   text-decoration:none;
   word-wrap: break-word;
-  width: 100%;
 
-  #delete{
+  #delete {
     float:right;
-    font-size: xx-small;
+    font-size: small;
+  }
+}
+
+.container-category:hover {
+  opacity: 0.8;
+  background-color: #214769;
+  border-left: 5px solid rgb(31, 225, 1);
+  text-shadow: 0 0 0.02em $lightblue;
+}
+
+.container-category a {
+  /*color: #45a4ff*/
+  color: $buttoncolor;
+}
+
+
+
+
+.container {
+  border: 2px solid;
+  border-left: 5px solid #0e1e2c;
+  border-right:none;
+  margin: 0 auto;
+  margin-bottom: 0.75em;
+  padding: 1em;
+  font-size: 1.75em;
+  overflow: auto;
+  font-family: $font-stack;
+  color: $lightbluedark;
+  text-decoration:none;
+  word-wrap: break-word;
+
+  #delete {
+    float:right;
+    font-size: small;
   }
 }
 
 .container:hover {
   opacity: 0.8;
-  background-color: #0e1e2c;
-  font-weight: 100;
+  background-color: #214769;
+  border-left: 5px solid rgb(31, 225, 1);
   text-shadow: 0 0 0.02em $lightblue;
-}
-
-.contain:hover a {
-  color: white;
 }
 
 .container a {
   /*color: #45a4ff*/
   color: $buttoncolor;
+}
+
+div.container div {
+  display: none;
+  color: white;
+  font-weight: 100;
+  padding-top: 15px;
 }
 
 /*generic id for adding margin, can be redone*/
@@ -149,6 +186,7 @@ a:visited {
 /*font awesome*/
 #fa {
   text-align:left;
+
 }
 #a:hover, #c:hover{
   text-shadow: 0 0 0.2em $lightblue
@@ -158,7 +196,7 @@ a:visited {
 #welcome {
   text-align: center;
   background-color: $primary-color;
-  width: 400px;
+  width: 25%;
   margin: 0 auto;
   color: #45a4ff ;
   padding-top: 40px;
@@ -166,7 +204,7 @@ a:visited {
   position: absolute;
   top: 40%; left: 0; right: 0;
   margin: 0 auto;
-  border: 1px solid #22486E;
+  border: 5px solid #22486E;
   z-index: 10;
   border-radius: 5px;
     -webkit-box-shadow: 0 8px 6px -6px black;
@@ -195,7 +233,10 @@ a:visited {
 
 button {
   border: 1px solid white;
-  padding: 5px 15px;
+  padding: 8px;
+  font-size: 1.3em;
+  margin-top: 15px;
+  border-radius: 3px;
   background-color: $buttoncolor;
   font-family: $font-stack;
 }
@@ -208,33 +249,51 @@ nav li {
   list-style-type: none;
   display: block;
   float: right;
-  padding: 10px;
-
   margin-right: 2%;
+  padding-right: 20px;
 }
 
-nav {
-  border: 1px solid #22486E;
-  height: 40px;
+nav { 
+  height: 50px;
   width: 100%;
-  padding: 15px;
-  background: #16314b;
+  padding-bottom: 12px;
+  padding-top: 15px;
+  padding-left: 20px;
+  background: #314495;
+  border-bottom: 2px solid $lightbluedark; 
 }
 
 nav #title {
   float: left;
-  vertical-line-height: 5px;
   font-family: 'ubuntu';
-  color: #45a4ff;
+  color: #C1BFB0;
   text-shadow: 0 0 0.05em $lightblue;
-  font-size: 32px;
+  font-size: 2.75em;
 }
 
 #category_name {
+  color: #C1BFB0;
+  font-size: 3.50em;
 }
 
 #user_email, 
 #user_password, 
 #user_password_confirmation {
   background-color: $textcolor;
+  border-radius: 3px;
 }
+
+input:-webkit-autofill {
+  color: #fff !important;
+}
+
+input {
+  height: 30px;
+  font-size: 20px;
+}
+
+.event {
+  font-family: $font-stack;
+}
+
+
