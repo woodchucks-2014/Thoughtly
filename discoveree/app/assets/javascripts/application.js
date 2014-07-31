@@ -13,10 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery_visible
-//= require arbor
-//= require renderer
-//= require arbor-tween
-//= require nodegraph
 //= require_tree .
-
-

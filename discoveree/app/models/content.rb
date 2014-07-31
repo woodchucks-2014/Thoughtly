@@ -10,7 +10,7 @@ class Content < ActiveRecord::Base
     youtube_service_api_name = "youtube"
     youtube_api_version = "v3"
     opts = Trollop::options do
-      opt :q, 'Search term', :source => String, :default => query
+      opt :p, 'Search term', :source => String, :default => query
       opt :maxResults, 'Max results', :source => :int, :default => 25
     end
 
@@ -41,7 +41,7 @@ class Content < ActiveRecord::Base
     videos = []
     unless response["elements"] == nil
       response["elements"].each do |entry|
-        videos << {:url => "https://www.coursera.org/course/#{entry['shortName']}", :name => entry['name']} 
+        videos << {:url => "https://www.coursera.org/course/#{entry['shortName']}", :name => entry['name']}
       end
     end
     return [videos[0]]
@@ -65,13 +65,13 @@ class Content < ActiveRecord::Base
     response = HTTParty.get(url)
     videos = []
     response["results"].each do |result|
-      videos << {:url => "http://www.ted.com/talks/#{result["talk"]["slug"]}", :name=> result["talk"]["name"]} 
+      videos << {:url => "http://www.ted.com/talks/#{result["talk"]["slug"]}", :name=> result["talk"]["name"]}
     end
     results = []
     videos[0..1].each do |video|
       video[:description] = Content.scrape_description(video[:url], "ted")
       results << video
-    end 
+    end
     return results
   end
 
@@ -93,7 +93,7 @@ class Content < ActiveRecord::Base
   end
 
   def self.scrape_description(url, source)
-    case 
+    case
     when url =~ /ted/
       request = 'http://access.alchemyapi.com/calls/url/URLGetConstraintQuery?apikey='+ ENV['ALCHEMY_KEY'] +'&url=' + url + '&outputMode=json&cquery=P'
       results = JSON.parse(RestClient.get request, :content_type => :json, :accept => :json)
@@ -122,10 +122,10 @@ class Content < ActiveRecord::Base
         contents.each do |content|
           if source == "ted" || source == "youtube" || source == "nytimes"
             user.categories.last.contents << Content.create(url: content[:url], source: source, name: content[:name], description: content[:description])
-          elsif source == "wikipedia" 
+          elsif source == "wikipedia"
             user.categories.last.contents << Content.create(url: content, source: source)
-          else 
-            user.categories.last.contents << Content.create(url: content[:url], source: source, name: content[:name])     
+          else
+            user.categories.last.contents << Content.create(url: content[:url], source: source, name: content[:name])
           end
         end
       end
