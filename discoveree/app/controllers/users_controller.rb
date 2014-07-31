@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   include UserHelper
 
   def index
@@ -40,10 +40,6 @@ class UsersController < ApplicationController
     redirect_to user_categories_path(@current_user)
   end
 
-  def destroy
-    session[:user_id] = nil
-    redirect_to :root
-  end
 
   def logout
     session.clear
